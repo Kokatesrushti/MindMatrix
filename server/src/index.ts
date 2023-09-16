@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 config();
 
-import express from "express";
+import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 
@@ -16,7 +16,8 @@ app.use(
 );
 app.use(express.json());
 
-app.get('/', (req, res, next) => {
+app.get('/', (req: Request, res: Response, next) => {
+    req.user = {username: 'test', org_email: 'test2'};
     res.send('indexxx');
 });
 
