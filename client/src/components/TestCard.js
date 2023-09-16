@@ -6,7 +6,7 @@ const TestCard = ({ testName }) => {
     <div className="max-w-md bg-white shadow-md rounded-md overflow-hidden my-4">
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{testName}</div>
-        {/* You can add more content to the card here */}
+        
       </div>
     </div>
   );

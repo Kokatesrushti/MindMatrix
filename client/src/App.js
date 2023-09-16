@@ -1,15 +1,16 @@
 import './App.css';
 import Navbar from './components/Navbar'
-import TestList from './Pages/TestList';
+import AllRoutes from './AllRoutes';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
   return (
-    <>
     <div className="App">
+    <Router>
     <Navbar />
-    <TestList />
-    </div>
-    </>
+    <AllRoutes />
+    </Router>
+   </div>
   );
 }
 
