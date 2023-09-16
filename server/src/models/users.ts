@@ -4,27 +4,17 @@ const Schema = mongoose.Schema;
 // const ObjectId = mongoose.Types.ObjectId;
 
 const UserSchema = new Schema({
-    name: {
+    org_email: {
         type: String,
         required: true,
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    age: {
-        type: Number,
-        required: true,
-    },
-    gender: {
-        type: String,
-        enum: ['Male', 'Female', 'Other'],
     },
     username: {
         type: String,
         required: true,
-        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
     },
 });
 
