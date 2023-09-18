@@ -4,7 +4,8 @@ declare module 'express-serve-static-core' {
   interface Request {
     user: {
       username: string;
-      org_email: string;
+      email: string;
+      org_code: string;
       // Add more custom properties as needed
     };
   }

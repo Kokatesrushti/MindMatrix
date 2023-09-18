@@ -6,6 +6,49 @@ import { validationResult } from 'express-validator';
 
 const saltRounds = 10;
 
+export const createUser = async (req: Request, res: Response): Promise<any> => {
+  let success = false;
+
+  // If there are validation errors return bad request and the errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  try {
+    const { name, email, age, dob, password, organization_code } = req.body;
+
+    // check whether the user with this email exists already
+    let user = await User.findOne({ username: name, email: email });
+    if (user) {
+      return res.status(400).json({ success, error: "User already exists" });
+    }
+
+    // Salting password
+    const salt = await bcrypt.genSalt(saltRounds);
+    const secPass = await bcrypt.hash(password, salt);
+
+    // Creating a new user
+    user = await User.create({
+      username: name,
+      email: email,
+      age: age,
+      password: secPass,
+      org_code: organization_code,
+    });
+
+    // Token authentication using JWT
+    const authtoken = signToken(user.username, user.email, user.org_code);
+
+    // Response
+    success = true;
+    res.status(201).json({ success, authtoken });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal server error");
+  }
+};
+
 export async function login(req: Request, res: Response): Promise<any> {
   let success = false;
 
@@ -17,67 +60,35 @@ export async function login(req: Request, res: Response): Promise<any> {
   }
 
   try {
-    const { org_email, username, password } = req.body;
+    const { name, email, password } = req.body;
 
     // Finding if user exists
-    const user = await User.findOne({ org_email, username });
+    const user = await User.findOne({ username: name, email: email });
     if (!user) {
-      res.status(400).json({ success, error: 'Please try to login with correct credentials' });
-      return;
+      return res.status(400).json({ success, error: 'Please try to login with correct credentials' });
     }
 
     // Matching user password
     const passwordCompare = await bcrypt.compare(password, user.password);
     if (!passwordCompare) {
-      res.status(400).json({ success, error: 'Please try to login with correct credentials' });
-      return;
+      return res.status(400).json({ success, error: 'Please try to login with correct credentials' });
     }
 
     // Token authentication using JWT
-    const authtoken = signToken(user.org_email, user.username);
+    const authtoken = signToken(user.username, user.email, user.org_code);
 
     // Response
     success = true;
     res.status(200).json({ success, authtoken });
+
+    // if (user.username === 'admin' && user.email === 'admin@example.com') {
+    //   return;
+    // }
+
     return;
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');
     return;
-  }
-};
-
-export async function getUser(req: Request, res: Response): Promise<any> {
-  try {
-    // Finding user to fetch
-    const userEmail: string = req.user.org_email;
-    const userUsername: string = req.user.username;
-
-    if (!userEmail || !userUsername) {
-      res.status(400).json({ error: 'Please try to login with correct credentials' });
-      return;
-    }
-
-    const user = await User.findOne({
-      username: userUsername,
-      email: userEmail,
-    }).select('-password');
-
-    if (!user) {
-      res.status(400).json({ error: 'No user found with request object' });
-      return;
-    }
-
-    // Response
-    res.status(200).json({
-      status: 'success',
-      results: user ? 1 : 0,
-      data: {
-        user,
-      },
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
   }
 };

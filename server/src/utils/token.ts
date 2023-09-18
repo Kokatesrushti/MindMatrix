@@ -4,11 +4,12 @@ import path from 'path';
 
 config({ path: './.env' });
 
-const signToken = (org_email: string, username: string) => {
+const signToken = ( username: string, email: string, code: string,) => {
     const data = {
         user: {
             username,
-            org_email,
+            email,
+            code,
         },
     };
 
