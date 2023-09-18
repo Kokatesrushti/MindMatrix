@@ -6,7 +6,6 @@ import fetchUser from '../middlewares/fetchUser';
 const router: Router = express.Router();
 
 router.post('/createuser', [
-    body('name', 'Enter a valid name').isLength({ min: 3 }),
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password should contain atleast 5 characters').isLength({ min: 5 })
   ], createUser);

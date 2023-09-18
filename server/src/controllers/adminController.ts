@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import Organization from '../models/organizations'; // Assuming you have a User model
-import signToken from '../utils/token';
+import {signToken} from '../utils/token';
 import { validationResult } from 'express-validator';
 
 export async function createOrganization(req: Request, res: Response): Promise<any> {
@@ -39,4 +39,8 @@ export async function createOrganization(req: Request, res: Response): Promise<a
     console.error(error);
     res.status(500).send('Internal server error');
   }
+};
+
+export const adminDashboard = (req: Request, res: Response): void => {
+  res.status(200).json('Chillaxxx admin');
 };

@@ -1,24 +1,14 @@
 import { Request, Response } from 'express';
 import User from '../models/users'; // Assuming you have a User model
-import signToken from '../utils/token';
+import {signToken} from '../utils/token';
 import { validationResult } from 'express-validator';
 
-export async function getUser(req: Request, res: Response): Promise<any> {
+export async function getUser(req: Request, res: Response): Promise<void> {
     try {
       // Finding user to fetch
-      const userEmail: string = req.user.email;
-      const userUsername: string = req.user.username;
-      const OrganizationCode: string = req.user.org_code;
-  
-      if (!userEmail || !userUsername || !OrganizationCode) {
-        res.status(400).json({ error: 'Please try to login with correct credentials' });
-        return;
-      }
-  
       const user = await User.findOne({
-        username: userUsername,
-        email: userEmail,
-        org_code: OrganizationCode,
+        username: req.user.username,
+        email: req.user.email,
       }).select('-password');
   
       if (!user) {
