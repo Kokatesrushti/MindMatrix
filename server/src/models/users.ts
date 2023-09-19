@@ -24,6 +24,30 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    TMP: {
+        type: Number,
+    },
+    CM: {
+        type: Number,
+    },
+    SANT: {
+        type: Number,
+    },
+    TSTA: {
+        type: Number,
+    },
+    OPI: {
+        type: Number,
+    },
+    MA: {
+        type: Number,
+    },
+    RSM: {
+        type: Number,
+    },
+    Writing: {
+        type: Number,
+    },
 });
 
 const UserModel = mongoose.model("User", UserSchema);

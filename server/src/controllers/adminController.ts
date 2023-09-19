@@ -41,6 +41,37 @@ export async function createOrganization(req: Request, res: Response): Promise<a
   }
 };
 
+export async function getOrganization(req: Request, res: Response): Promise<any> {
+  let success = false;
+
+  // If there are validation errors, return a bad request with the errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  try {
+    const { orgi_name, orgi_code } = req.body;
+
+    // Create and save a new user document
+    const Orgi = await Organization.findOne({
+      org_name: orgi_name,
+      org_code: orgi_code,
+    })
+
+    if (!Orgi) {
+      return res.status(400).json({ success, error: 'Please try with correct stuff' });
+    }
+
+    // Response
+    success = true;
+    res.status(201).json({ success , Orgi});
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+};
+
 export const adminDashboard = (req: Request, res: Response): void => {
   res.status(200).json('Chillaxxx admin');
 };
