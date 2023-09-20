@@ -24,6 +24,11 @@ export const verifyAdmin = async (req: Request, res: Response, next: NextFunctio
       return;
     }
 
+    if (decoded.exp < Date.now() / 1000) {
+      res.status(401).json({ error: 'Token has expired' });
+      return;
+    }
+
     const user = await User.findOne({ username: decoded.user.username, email: decoded.user.email });
 
 
@@ -56,11 +61,17 @@ export const verifyUser = async (req: Request, res: Response, next: NextFunction
       res.status(401).json({ success: false, message: 'Access denied, no payload provided' });
       return;
     }
+
+    if (data.exp < Date.now() / 1000) {
+      res.status(401).json({ error: 'Token has expired' });
+      return;
+    }
+
     // Check if the decoded token matches the user's username
     const user = await User.findOne({ username: data.user.username, email: data.user.email });
 
-    if(user?.username === 'admin' && user.email === 'admin@example.com') {
-      res.status(401).json({ success: false, message: 'You are not a user, but an admin'});
+    if (user?.username === 'admin' && user.email === 'admin@example.com') {
+      res.status(401).json({ success: false, message: 'You are not a user, but an admin' });
       return;
     }
     if (user) {
