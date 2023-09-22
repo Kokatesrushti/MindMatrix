@@ -1,3 +1,6 @@
+import { config } from "dotenv";
+config();
+
 import { Request, Response } from 'express';
 import User from '../models/users'; // Assuming you have a User model
 import * as bcrypt from 'bcryptjs';
@@ -65,6 +68,13 @@ export async function login(req: Request, res: Response): Promise<any> {
   try {
     const { username, password } = req.body;
 
+    if (username === process.env.ADMIN_USERNAME && email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+      const authtoken = signToken(username, email, '6969');
+
+      res.status(200).json({ success: true, userType: 'admin', authtoken });
+      return;
+    }
+
     // Finding if user exists
     const user = await User.findOne({
       username: username,
@@ -84,12 +94,7 @@ export async function login(req: Request, res: Response): Promise<any> {
 
     // Response
     success = true;
-    res.status(200).json(authtoken);
-
-    // if (user.username === 'admin' && user.email === 'admin@example.com') {
-    //   return;
-    // }
-
+    res.status(200).json({ success, userType: 'user', authtoken });
     return;
   } catch (error) {
     console.error(error);

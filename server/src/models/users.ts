@@ -3,6 +3,16 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 // const ObjectId = mongoose.Types.ObjectId;
 
+const subcategorySchema = new mongoose.Schema({
+    name: String,
+    score: Number,
+}, { _id: false });
+
+const testResultSchema = new mongoose.Schema({
+    testType: String,
+    subcategories: [subcategorySchema],
+}, { _id: false });
+
 const UserSchema = new Schema({
     username: {
         type: String,
@@ -24,30 +34,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    TMP: {
-        type: Number,
-    },
-    CM: {
-        type: Number,
-    },
-    SANT: {
-        type: Number,
-    },
-    TSTA: {
-        type: Number,
-    },
-    OPI: {
-        type: Number,
-    },
-    MA: {
-        type: Number,
-    },
-    RSM: {
-        type: Number,
-    },
-    Writing: {
-        type: Number,
-    },
+    testResults: [testResultSchema], //array of test results
 });
 
 const UserModel = mongoose.model("User", UserSchema);

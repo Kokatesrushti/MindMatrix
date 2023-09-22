@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import Organization from '../models/organizations'; // Assuming you have a User model
-import {signToken} from '../utils/token';
+import Organization from '../models/organizations';
+import User from '../models/users';
+import { signToken } from '../utils/token';
 import { validationResult } from 'express-validator';
 
 export async function createOrganization(req: Request, res: Response): Promise<any> {
@@ -41,6 +42,58 @@ export async function createOrganization(req: Request, res: Response): Promise<a
   }
 };
 
+export async function getAllOrg(req: Request, res: Response): Promise<any> {
+  let success = false;
+  try {
+    // Create and save a new user document
+    const orgs = await Organization.find(); // Fetch all documents from the 'users' collection
+
+    // Response
+    success = true;
+    res.status(201).json({ success, orgs });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+};
+
+export async function getUsersOrg(req: Request, res: Response): Promise<any> {
+  try {
+    const { org_name, org_email, org_code } = req.body;
+
+    const usersPerOrg = await User.find({ org_code: org_code });
+    const Org = await Organization.findOne({ org_name: org_name, org_email: org_email });
+
+    if (!usersPerOrg) {
+      res.status(404).send('No users found');
+      return;
+    }
+
+    const totalUsers = usersPerOrg.length;
+
+    res.status(200).json({ Org, usersPerOrg, totalUsers });
+  } catch (error) {
+    console.error('Error finding users:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+export async function getUserInfo(req: Request, res: Response): Promise<any> {
+  try {
+    const { username, email } = req.body;
+
+    const user = await User.find({
+      username: username,
+      email: email
+    }).select('-_id -password');
+
+    res.status(200).json({ success: true, user });
+  } catch (error) {
+    console.error('Error finding the user:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
 export async function getOrganization(req: Request, res: Response): Promise<any> {
   let success = false;
 
@@ -65,7 +118,7 @@ export async function getOrganization(req: Request, res: Response): Promise<any>
 
     // Response
     success = true;
-    res.status(201).json({ success , Orgi});
+    res.status(201).json({ success, Orgi });
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');

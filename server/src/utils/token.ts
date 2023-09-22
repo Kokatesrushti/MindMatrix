@@ -4,12 +4,12 @@ import path from 'path';
 
 config({ path: './.env' });
 
-export function signToken ( username: string, email: string, code: string,): string {
+export function signToken ( username: string, email: string, org_code: string,): string {
     const data = {
         user: {
             username,
             email,
-            code,
+            org_code,
         },
     };
 
