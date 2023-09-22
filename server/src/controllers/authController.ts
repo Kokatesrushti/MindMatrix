@@ -18,6 +18,8 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
   try {
     const { username, email, age, password, organization_code } = req.body;
 
+    console.log(req.body)
+
     // check whether the user with this email exists already
     let user = await User.findOne({ username: username, email: email });
     if (user) {
@@ -39,6 +41,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
 
     // Token authentication using JWT
     const authtoken = signToken(user.username, user.email, user.org_code);
+    console.log(authtoken)
 
     // Response
     success = true;
@@ -60,12 +63,11 @@ export async function login(req: Request, res: Response): Promise<any> {
   }
 
   try {
-    const { username, email, password } = req.body;
+    const { username, password } = req.body;
 
     // Finding if user exists
     const user = await User.findOne({
       username: username,
-      email: email,
     });
     if (!user) {
       return res.status(400).json({ success, error: 'Please try to login with correct credentials' });

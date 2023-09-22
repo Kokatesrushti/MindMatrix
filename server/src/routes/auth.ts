@@ -11,7 +11,7 @@ router.post('/createuser', [
   ], createUser);
 
 router.post('/login', [
-    body('email', "Enter a valid email").isEmail(),
+    // body('email', "Enter a valid email").isEmail(),
     body('username', "Username cannot be blank").exists(),
     body('password', "Password cannot be blank").exists(),
 ], login);

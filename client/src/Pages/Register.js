@@ -2,30 +2,62 @@ import React, { useState } from 'react';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     email: '',
     age: '',
-    dateOfBirth: '',
     password: '',
-    organizationCode: '',
+    organization_code: '', // Update the field name to match the backend
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  console.log(formData)
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.age <= 0) {
-        alert('Age must be greater than 0');
-        return; 
+      alert('Age must be greater than 0');
+      return;
+    }
+
+     try {
+    const response = await fetch('http://localhost:5000/auth/createuser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('Registration successful:', data);
+
+      const token = data.token;
+
+      localStorage.setItem('token', token);
+
+
+      window.location.href = '/login';
+    } else {
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const data = await response.json();
+        console.error('Registration failed:', data.error);
+      } else {
+        console.error('Registration failed with non-JSON response');
       }
-    console.log(formData);
+    }
+  } catch (error) {
+    console.error('Error during registration:', error);
+  }
   };
 
   return (
@@ -37,9 +69,9 @@ const Register = () => {
             <label htmlFor="name" className="flex items-start text-gray-700 font-semibold">Name *</label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="username"
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               required
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
@@ -70,18 +102,6 @@ const Register = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="dateOfBirth" className="flex items-start text-gray-700 font-semibold">Date of Birth *</label>
-            <input
-              type="date"
-              id="dateOfBirth"
-              name="dateOfBirth"
-              value={formData.dateOfBirth}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
-            />
-          </div>
-          <div className="mb-4">
             <label htmlFor="password" className="flex items-start text-gray-700 font-semibold">Password *</label>
             <input
               type="password"
@@ -94,12 +114,13 @@ const Register = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="organizationCode" className="flex items-start text-gray-700 font-semibold">Organization Code</label>
+            <label htmlFor="org_code" className="flex items-start text-gray-700 font-semibold">Organization Code</label>
             <input
               type="text"
-              id="organizationCode"
-              name="organizationCode"
-              value={formData.organizationCode}
+              id="organization_code" // Update the id to match the field name
+              name="organization_code" // Update the name to match the backend field name
+              value={formData.organization_code} // Update the value to match the field name
+              required
               onChange={handleChange}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
             />
