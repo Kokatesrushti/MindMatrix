@@ -50,26 +50,47 @@ export async function getTestResults(req: Request, res: Response): Promise<void>
       email: req.user.email,
     };
 
-    const key = Object.keys(req.body)[0];
-    const value: number = req.body[key];
+    const testType = req.body.testType;
+    const subCategory = req.body.subCategory;
+    const score = req.body.score;
 
-    // Define the update data
-    const update = {
-      $set: {
-        [key]: value,
-      },
-    };
+    // Check if a document with the same testType exists
+    const existingUser = await User.findOne(filter);
 
-    // Update a single document
-    const results = await User.updateOne(filter, update);
+    if (existingUser) {
+      // Document with the same testType exists, find it and push the subcategory
+      const testResultToUpdate = existingUser.testResults.find(
+        (result) => result.testType === testType
+      );
 
-    if (results.acknowledged && results.modifiedCount > 0) {
-      console.log('Document updated successfully');
+      if (testResultToUpdate) {
+        testResultToUpdate.subcategories.push({ name: subCategory, score: score });
+      } else {
+        // If there's no existing testResult for this testType, create a new one
+        existingUser.testResults.push({
+          testType: testType,
+          subcategories: [{ name: subCategory, score: score }],
+        });
+      }
+
+      // Save the updated document
+      await existingUser.save();
+
       res.status(200).json({ success: true });
+      return;
     } else {
-      console.log('Document not found or not updated');
-      res.status(404).json({ success: false, error: 'Document not found or not updated' });
-    };
+      // If the user document doesn't exist, handle accordingly
+      console.log("User not found");
+      res.status(404).json({ success: false, error: "User not found" });
+    }
+
+    // if (results.acknowledged && results.modifiedCount > 0) {
+    //   console.log('Document updated successfully');
+    //   res.status(200).json({ success: true });
+    // } else {
+    //   console.log('Document not found or not updated');
+    //   res.status(404).json({ success: false, error: 'Document not found or not updated' });
+    // };
 
   } catch (error) {
     console.error('Error updating document:', error);
@@ -82,7 +103,7 @@ export async function sendTestEmail(req: Request, res: Response): Promise<void> 
     const user = await User.findOne({
       username: req.user.username,
       email: req.user.email
-    }).select('-_id TMP CM SANT TSTA OPI MA RSM Writing');
+    }).select('-_id -password');
 
     if (!user) {
       res.status(404).json({ message: 'user not found' });

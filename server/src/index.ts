@@ -11,6 +11,7 @@ import adminRoute from "./routes/admin";
 import authRoute from "./routes/auth";
 import userRoute from "./routes/user";
 import { verifyAdmin, verifyUser } from "./middlewares/verifyLogin";
+import { handle404, handle500 } from './controllers/errorController';
 
 const PORT = 5000;
 
@@ -55,6 +56,9 @@ app.post('/jwtokeno', (req: Request, res: Response, next) => {
         res.status(500).send("Internal server error");
     }
 });
+
+app.use(handle404); //error handler
+app.use(handle500);
 
 const mongs = process.env.MONGO_URL;
 

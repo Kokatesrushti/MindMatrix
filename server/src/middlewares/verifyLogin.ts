@@ -1,9 +1,10 @@
+import { config } from "dotenv";
+config();
+
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
 import { Request, Response, NextFunction } from 'express';
 import User from '../models/users';
 
-dotenv.config({ path: '../.env' });
 
 // const JWT_SECRET: string | undefined = process.env.JWT_SECRET;
 
@@ -29,11 +30,11 @@ export const verifyAdmin = async (req: Request, res: Response, next: NextFunctio
       return;
     }
 
-    const user = await User.findOne({ username: decoded.user.username, email: decoded.user.email });
+    // const user = await User.findOne({ username: decoded.user.username, email: decoded.user.email });
 
 
     // Check if the decoded token matches the admin's username
-    if (user && decoded.user && decoded.user.username === 'admin' && decoded.user.email === 'admin@example.com') {
+    if (decoded.user && decoded.user.username === process.env.ADMIN_USERNAME && decoded.user.email === process.env.ADMIN_EMAIL) {
       req.user = decoded.user;
       next(); // User is an admin; allow access to the route
     } else {
@@ -70,10 +71,6 @@ export const verifyUser = async (req: Request, res: Response, next: NextFunction
     // Check if the decoded token matches the user's username
     const user = await User.findOne({ username: data.user.username, email: data.user.email });
 
-    if (user?.username === 'admin' && user.email === 'admin@example.com') {
-      res.status(401).json({ success: false, message: 'You are not a user, but an admin' });
-      return;
-    }
     if (user) {
       req.user = data.user;
       next();
