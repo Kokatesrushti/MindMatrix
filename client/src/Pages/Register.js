@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {Link}  from 'react-router-dom'
+import registerImg from '../images/register.png'
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -61,12 +63,15 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Registration Form</h2>
+    <div className='flex flex-row bg-black'>
+      <div className='flex-1'>
+        <img src={registerImg} alt="register" className="w-full h-auto"></img>
+      </div>
+      <div className="flex-1 w-full p-6 bg-white min-h-screen flex flex-col items-center justify-center">
+        <h2 className="text-3xl font-bold mb-10">Welcome</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="flex items-start text-gray-700 font-semibold">Name *</label>
+            <label htmlFor="name" className="flex items-start text-gray-700 font-semibold mb-1">Name *</label>
             <input
               type="text"
               id="username"
@@ -74,11 +79,11 @@ const Register = () => {
               value={formData.username}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="flex items-start text-gray-700 font-semibold">Email *</label>
+            <label htmlFor="email" className="flex items-start text-gray-700 font-semibold mb-1">Email *</label>
             <input
               type="email"
               id="email"
@@ -86,11 +91,11 @@ const Register = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="age" className="flex items-start text-gray-700 font-semibold">Age *</label>
+            <label htmlFor="age" className="flex items-start text-gray-700 font-semibold mb-1">Age *</label>
             <input
               type="number"
               id="age"
@@ -98,11 +103,11 @@ const Register = () => {
               value={formData.age}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="flex items-start text-gray-700 font-semibold">Password *</label>
+            <label htmlFor="password" className="flex items-start text-gray-700 font-semibold mb-1">Password *</label>
             <input
               type="password"
               id="password"
@@ -110,28 +115,29 @@ const Register = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="org_code" className="flex items-start text-gray-700 font-semibold">Organization Code</label>
+            <label htmlFor="org_code" className="flex items-start text-gray-700 font-semibold mb-1">Organization Code</label>
             <input
               type="text"
-              id="organization_code" // Update the id to match the field name
-              name="organization_code" // Update the name to match the backend field name
-              value={formData.organization_code} // Update the value to match the field name
+              id="organization_code" 
+              name="organization_code" 
+              value={formData.organization_code} 
               required
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
             />
           </div>
           <div className="mb-4">
             <button
               type="submit"
-              className="bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 focus:outline-none focus:ring focus:border-orange-300"
+              className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500"
             >
               Register
             </button>
+            <Link to='/login' className='text-md text-gray-600'>Already a member? Login</Link>
           </div>
         </form>
       </div>

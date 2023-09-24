@@ -414,27 +414,27 @@ const TestPage = () => {
     return marksPerQuestion;
   };
 
-  const handleSaveTestResults = async () => {
-    try {
-      const totalScore = calculateMarks(testAlias);
+  // const handleSaveTestResults = async () => {
+  //   try {
+  //     const totalScore = calculateMarks(testAlias);
 
-      const response = await fetch(`http://localhost:5000/user/${testAlias}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ totalScore }),
-      });
+  //     const response = await fetch(`http://localhost:5000/user/${testAlias}`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ totalScore }),
+  //     });
 
-      if (response.ok) {
-        console.log('Test results saved successfully.');
-      } else {
-        console.error('Failed to save test results:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error while saving test results:', error);
-    }
-  };
+  //     if (response.ok) {
+  //       console.log('Test results saved successfully.');
+  //     } else {
+  //       console.error('Failed to save test results:', response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error while saving test results:', error);
+  //   }
+  // };
 
   const marks = calculateMarks();
 
@@ -470,7 +470,6 @@ const TestPage = () => {
 
     <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-        onClick={handleSaveTestResults}
       >
         Submit
       </button>

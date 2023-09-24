@@ -68,8 +68,8 @@ export async function login(req: Request, res: Response): Promise<any> {
   try {
     const { username, password } = req.body;
 
-    if (username === process.env.ADMIN_USERNAME && email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
-      const authtoken = signToken(username, email, '6969');
+    if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
+      const authtoken = signToken(username, password, '6969');
 
       res.status(200).json({ success: true, userType: 'admin', authtoken });
       return;

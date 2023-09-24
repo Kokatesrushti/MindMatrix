@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const TestCard = ({ testAlias }) => {
+const TestCard = ({ testAlias,id }) => {
 
   const testAliasesToNames = {
     TMP: "Time Management and Procrastination",
@@ -21,7 +21,7 @@ const TestCard = ({ testAlias }) => {
     <div className="max-w-md bg-white shadow-md rounded-md overflow-hidden my-4">
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">
-        <Link to={`/test/${testAlias}`}>{testName}</Link>
+        <Link to={`/test/${id}/${testAlias}`}>{testName}</Link>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
+import registerImg from '../images/register.png';
 
 function Login({ setLoggedIn }) {
   const navigate = useNavigate();
@@ -42,20 +43,23 @@ function Login({ setLoggedIn }) {
         navigate('/');
       } else {
         console.error('Login failed:', response.statusText);
-        // You can provide feedback to the user that login failed
+    
       }
     } catch (error) {
       console.error('Error during login:', error);
-      // Handle other errors as needed
+
     }
 
 
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Login</h2>
+    <div className='flex flex-row bg-black'>
+      <div className='hidden md:block md:flex-1'>
+        <img src={registerImg} alt="register" className="w-full h-auto"></img>
+      </div>
+      <div className="flex-1 w-full p-6 bg-white min-h-screen flex flex-col items-center justify-center">
+        <h2 className="text-2xl font-bold text-gray-800 mb-10">Welcome back</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
@@ -70,7 +74,7 @@ function Login({ setLoggedIn }) {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
               required
             />
           </div>
@@ -87,17 +91,18 @@ function Login({ setLoggedIn }) {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
               required
             />
           </div>
           <div className="text-center">
             <button
               type="submit"
-              className="bg-orange-400 hover:bg-orange-500 text-white py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-orange-300"
+              className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500"
             >
               Log In
             </button>
+            <Link to='/register' className='text-md text-gray-600'>New member? Register</Link>
           </div>
         </form>
       </div>
