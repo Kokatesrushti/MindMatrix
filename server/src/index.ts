@@ -13,7 +13,7 @@ import userRoute from "./routes/user";
 import { verifyAdmin, verifyUser } from "./middlewares/verifyLogin";
 import { handle404, handle500 } from './controllers/errorController';
 
-const PORT = 5000;
+const PORT = 8001;
 
 const app = express();
 
