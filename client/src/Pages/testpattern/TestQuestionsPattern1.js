@@ -393,9 +393,15 @@ function TestQuestionsPattern1() {
     setScores(newScores);
   };
   const totalScore = scores.reduce((acc, score) => acc + score, 0);
-
+  
   return (
-    <div className='container mx-auto p-4 bg-gray-900 min-h-screen pt-20'>
+    <div className='container mx-auto p-4 bg-gray-900 min-h-screen'>
+    <h2 className='text-white text-left'>Assessment Rating Criteria: </h2>
+    <p className='text-white text-left'>Please evaluate each statement according to how often it applies to your situation. Use the following scale:</p>
+    <p className='text-white text-left'><strong>Never: </strong>Assign a rating of 1 if the statement rarely applies to you. </p>
+    <p className='text-white text-left'><strong>Sometimes:</strong> Assign a rating of 2 if the statement applies occasionally.  </p>
+    <p className='text-white text-left'><strong>Usually:</strong> Assign a rating of 3 if the statement applies frequently.  </p>
+    <p className='text-white text-left mb-5'><strong>Always: </strong> Assign a rating of 4 if the statement consistently applies to you.  </p>
     <h1 className="text-2xl font-bold mb-4 text-white">{subtest.title}</h1>
     {subtest.questions.map((question, questionIndex) => (
       <div key={questionIndex} className="mb-4">

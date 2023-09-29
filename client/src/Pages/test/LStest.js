@@ -1,18 +1,12 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom';
 
-function Mltest({ id }) {
-  const subtests = [
-    { id: 1, name: 'Liguistic' },
-    { id: 2, name: 'Logical/Mathematical' },
-    { id: 3, name: 'Visual/Spatial' },
-    { id: 4, name: 'Interpersonal' },
-    { id: 5, name: 'Musical' },
-    { id: 6, name: 'Naturalistic' },
-    { id: 7, name: 'Intrapersonal' },
-    { id: 8, name: 'Body/Kinaesthetic' },
-  ];
-
+function LStest({id}) {
+    const subtests = [
+        { id: 1, name: 'Visual' },
+        { id: 2, name: 'Auditory' },
+        { id: 3, name: 'Kinesthetic' },
+      ];
   return (
     <div className='flex flex-col bg-black min-h-screen p-10'>
       <div className="p-4 max-w-md">
@@ -29,7 +23,7 @@ function Mltest({ id }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Mltest;
+export default LStest

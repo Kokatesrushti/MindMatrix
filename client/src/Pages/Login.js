@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
 import registerImg from '../images/register.png';
+import Navbar from '../components/Navbar';
 
 function Login({ setLoggedIn }) {
   const navigate = useNavigate();
@@ -17,30 +18,39 @@ function Login({ setLoggedIn }) {
     });
   };
 
+
+  
   const handleSubmit = async(e) => {
     e.preventDefault();
     const { username, password } = formData;
 
-    if (username === 'admin' && password === 'password') {
-      setLoggedIn(true);
-      navigate('/admin');
-    }
 
-    
     try {
       const response = await fetch('http://localhost:5000/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password}),
       });
 
       if (response.ok) {
         const data = await response.json();
         console.log(data)
         console.log("successful login");
-        navigate('/');
+        if(data.usertype==="user")
+        {
+          // navigate('/');
+          window.location.href = '/';
+        }
+        if(data.userType==="admin")
+        {
+          // navigate('/admin');
+          window.location.href = '/admin';
+          const authtoken = data.authtoken; // Replace with the actual token
+          localStorage.setItem('authtoken', authtoken);
+        }
+        
       } else {
         console.error('Login failed:', response.statusText);
     
@@ -53,7 +63,12 @@ function Login({ setLoggedIn }) {
 
   };
 
+
+  
+
   return (
+    <>
+    <Navbar />
     <div className='flex flex-row bg-black'>
       <div className='hidden md:block md:flex-1'>
         <img src={registerImg} alt="register" className="w-full h-auto"></img>
@@ -107,6 +122,7 @@ function Login({ setLoggedIn }) {
         </form>
       </div>
     </div>
+    </>
   );
 }
 

@@ -1,24 +1,50 @@
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import OrganizationCard from '../components/OrganizationCard';
 
 function AdminPanel ({ loggedIn }) {
   const [organizations, setOrganizations] = useState([]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [code, setCode] = useState('');
+  const [orgi_name, setName] = useState('');
+  const [orgi_email, setEmail] = useState('');
+  const [orgi_code, setCode] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = () => {
-    const newOrganization = { name, email, code };
-    setOrganizations([...organizations, newOrganization]);
+
+
+  const handleRegister = async () => {
+    // const newOrganization = { name, email, code };
+    // setOrganizations([...organizations, newOrganization]);
+    try {
+      const authtoken = localStorage.getItem('authtoken');
+      console.log(authtoken)
+      const response = await fetch('http://localhost:5000/admin/createorg', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authtoken}`
+        },
+        body: JSON.stringify({ orgi_name, orgi_email}),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data)
+        console.log("successfully Created");
+        navigate('/admin');
+      } else {
+        console.error('Registration failed:', response.statusText);
+    
+      }
+    } catch (error) {
+      console.error('Error during Creation :', error);
+
+    }
   };
 
-  if (!loggedIn) {
-    navigate('/login');
-  }
+ 
+  
 
   return (
     <div className="bg-gray-100 min-h-screen p-4">
@@ -29,21 +55,21 @@ function AdminPanel ({ loggedIn }) {
           <input
             type="text"
             placeholder="Name"
-            value={name}
+            value={orgi_name}
             onChange={(e) => setName(e.target.value)}
             className="w-1/3 p-2 border rounded mr-2"
           />
           <input
             type="email"
             placeholder="Email"
-            value={email}
+            value={orgi_email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-1/3 p-2 border rounded mr-2"
           />
           <input
             type="text"
             placeholder="Code"
-            value={code}
+            value={orgi_code}
             onChange={(e) => setCode(e.target.value)}
             className="w-1/3 p-2 border rounded mr-2"
           />

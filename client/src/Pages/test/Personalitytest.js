@@ -1,22 +1,18 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom';
 
-function Mltest({ id }) {
-  const subtests = [
-    { id: 1, name: 'Liguistic' },
-    { id: 2, name: 'Logical/Mathematical' },
-    { id: 3, name: 'Visual/Spatial' },
-    { id: 4, name: 'Interpersonal' },
-    { id: 5, name: 'Musical' },
-    { id: 6, name: 'Naturalistic' },
-    { id: 7, name: 'Intrapersonal' },
-    { id: 8, name: 'Body/Kinaesthetic' },
-  ];
-
+function Personalitytest({id}) {
+    const subtests = [
+        { id: 1, name: 'Openness' },
+        { id: 2, name: 'Conscientiousness' },
+        { id: 3, name: 'Extroversion' },
+        { id: 4, name: 'Agreeableness' },
+        { id: 5, name: 'Neuroticism' },
+      ];
   return (
     <div className='flex flex-col bg-black min-h-screen p-10'>
       <div className="p-4 max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-white">Study Skill Profile Assessment</h2>
+        <h2 className="text-2xl font-bold mb-4 text-white">Personality Test</h2>
         <div className="space-y-4">
           {subtests.map((subtest) => (
             <Link key={subtest.id} to={`/test/${id}/${subtest.id}`}>
@@ -29,7 +25,7 @@ function Mltest({ id }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Mltest;
+export default Personalitytest

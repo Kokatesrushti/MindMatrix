@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from '../components/Navbar'
 
 function Home() {
   return (
+    <>
+    <Navbar />
     <div className="bg-black min-h-screen py-20">
       <div className="container mx-auto">
         <h1 className='text-white text-center text-lg mb-2 font-bold'>PSYCHOMETRIC TESTS</h1>
@@ -46,6 +49,7 @@ function Home() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

@@ -14,7 +14,7 @@ function Spsatest({ id }) {
   ];
 
   return (
-    <div className='flex flex-col bg-gray-900 mt-10 min-h-screen p-10'>
+    <div className='flex flex-col bg-black min-h-screen p-10'>
       <div className="p-4 max-w-md">
         <h2 className="text-2xl font-bold mb-4 text-white">Study Skill Profile Assessment</h2>
         <div className="space-y-4">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Link}  from 'react-router-dom'
 import registerImg from '../images/register.png'
+import Navbar from '../components/Navbar';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -63,6 +64,8 @@ const Register = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className='flex flex-row bg-black'>
       <div className='flex-1'>
         <img src={registerImg} alt="register" className="w-full h-auto"></img>
@@ -142,6 +145,7 @@ const Register = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 
