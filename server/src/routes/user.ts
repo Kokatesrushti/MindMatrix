@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from 'express';
 import { body } from 'express-validator';
-import { getUser, userDashboard, getTestResults, sendTestEmail, tektest } from '../controllers/UserController';
+import { getUser, userDashboard, getTestResults, sendTestEmail, tektest, makeFinalPdf, feedbackTest } from '../controllers/UserController';
 import fetchUser from '../middlewares/fetchUser';
 
 const router: Router = express.Router();
@@ -28,5 +28,9 @@ router.post('/testResultToAPI', fetchUser, getTestResults); // One single route 
 // } for req.body
 
 router.get('/sendToEmail', fetchUser, sendTestEmail);
+
+router.get('/makepdf', fetchUser, makeFinalPdf);
+
+router.get('/feedbacktest', feedbackTest);
 
 export default router;

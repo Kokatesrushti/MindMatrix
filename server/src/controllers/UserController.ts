@@ -1,7 +1,13 @@
 import { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
 import User from '../models/users'; // Assuming you have a User model
-import { UpdateWriteOpResult } from 'mongoose';
+// import { UpdateWriteOpResult } from 'mongoose';
+import { Chart, registerables } from 'chart.js';
+import { registerFont, createCanvas } from 'canvas';
+import { PDFDocument, rgb } from 'pdf-lib';
+import fs from 'fs';
+import { makeBarChartPdf } from './pdfController';
+import { getFeedback } from '../utils/feedbackFunction';
 // import { signToken } from '../utils/token';
 // import { validationResult } from 'express-validator';
 
@@ -139,3 +145,27 @@ export async function sendTestEmail(req: Request, res: Response): Promise<void> 
     res.status(500).json({ success: false, error: error });
   }
 };
+
+export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
+  try {
+
+    await makeBarChartPdf(req, res, "Study Skills Set Profile", 16);
+    await makeBarChartPdf(req, res, "Aptitude", 6);
+
+    console.log('PDF modification complete.');
+
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+  }
+}
+
+export function feedbackTest(req: Request, res: Response) {
+  const {feedback, percentage} = getFeedback("MULTIPLE INTELLIGENCE","LINGUISTIC",24);
+
+  console.log(feedback);
+  console.log(percentage);
+  res.status(200).json({success: true});
+  return;
+}
