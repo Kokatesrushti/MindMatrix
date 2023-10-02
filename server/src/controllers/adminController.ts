@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import Organization from '../models/organizations';
+import nodemailer from 'nodemailer';
 import User from '../models/users';
 import { signToken } from '../utils/token';
 import { validationResult } from 'express-validator';
@@ -15,6 +16,12 @@ export async function createOrganization(req: Request, res: Response): Promise<a
 
   try {
     const { orgi_name, orgi_email } = req.body;
+
+    //check if organization exists
+    let org = await Organization.findOne({ org_name: orgi_name, org_email: orgi_email});
+    if(org) {
+      return res.status(404).json({success, error: "organization already exists"});
+    }
 
     const charset = '0123456789';
     // Create num_ids usernames for the organization and save them
@@ -127,4 +134,46 @@ export async function getOrganization(req: Request, res: Response): Promise<any>
 
 export const adminDashboard = (req: Request, res: Response): void => {
   res.status(200).json('Chillaxxx admin');
+};
+
+export async function sendCodetoEmail(req: Request, res: Response): Promise<void> {
+  try {
+    const org = await Organization.findOne({
+      org_name: req.body.org_name,
+      org_email: req.body.org_email
+    }).select('-_id org_code');
+
+    if (!org) {
+      res.status(404).json({ message: 'organization not found' });
+      return;
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail', // Use the email service you prefer
+      auth: {
+        user: 'hissingsaint@gmail.com',
+        pass: 'dhxd kbsf lcah peij',
+      },
+    });
+
+    // Define the email content
+    const mailOptions: nodemailer.SendMailOptions = {
+      from: 'hissingsaint@gmail.com',
+      to: req.user.email, // The recipient's email address
+      subject: 'Data from psycometric tests',
+      text: 'Here is your code for the tests: ' + JSON.stringify(org.org_code)
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ success: false, error: 'error sending email' });
+      } else {
+        console.log('Email sent:', info.response);
+        res.status(200).json({ success: true });
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error });
+  }
 };

@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from 'express';
-import { body } from 'express-validator';
-import { getUser, userDashboard, getTestResults, sendTestEmail, tektest, makeFinalPdf, feedbackTest } from '../controllers/UserController';
+import { body, check } from 'express-validator';
+import { getUser, userDashboard, getTestResults, sendTestEmail, tektest, makeFinalPdf, feedbackTest, checkScore } from '../controllers/UserController';
 import fetchUser from '../middlewares/fetchUser';
 
 const router: Router = express.Router();
@@ -8,6 +8,8 @@ const router: Router = express.Router();
 router.get('/dashboard', userDashboard);
 
 router.get('/getuser', fetchUser, getUser);
+
+router.post('/checkscore', fetchUser, checkScore);
 
 router.post('/tektest', fetchUser, tektest);
 

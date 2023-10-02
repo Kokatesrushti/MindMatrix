@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import User from '../models/users'; // Assuming you have a User model
 import { UpdateWriteOpResult } from 'mongoose';
 import { Chart, registerables } from 'chart.js';
-import { registerFont, createCanvas } from 'canvas';
-import { PDFDocument, PDFImage, rgb } from 'pdf-lib';
+import { createCanvas } from 'canvas';
+import { PDFDocument, PDFImage, rgb, StandardFonts } from 'pdf-lib';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { getFeedback } from '../utils/feedbackFunction';
 import fs from 'fs';
@@ -147,7 +147,7 @@ export async function makeBarChartPdf(req: Request, res: Response, testType: str
     await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
 }
 
-export async function makeFeedbackPdf(req: Request, res: Response, testType: string, subCategory: string, pageNumber: number, Xd: number, Yd: number): Promise<void> {
+export async function makeFeedbackPdf(req: Request, res: Response, testType: string, subCategory: string, pageNumber: number, Fontsize: number,maxWords:number, Xd: number, Yd: number): Promise<void> {
     //get score from user
     const user = await User.findOne({
         username: req.user.username,
@@ -167,5 +167,73 @@ export async function makeFeedbackPdf(req: Request, res: Response, testType: str
     // Get a specific page (e.g., page 1)
     const page = pdfDoc.getPages()[pageNumber - 1]; // Page numbering is 0-based
 
+    // Getting feedback from function and converting into a list of lines
     const { feedback, percentage } = getFeedback(testType, subCategory, score as number);
+
+    const words = feedback?.split(' ');
+    let lines = [];
+
+    // if (words) {
+    //     for (let i = 0; i < words.length; i += 13) {
+    //         const line = words.slice(i, i + 13).join(' ');
+    //         lines.push(line);
+    //     }
+    // } else {
+    //     console.log('No feedback');
+    // }
+
+    if (words) {
+        const maxLineWidth = maxWords;
+
+        let currentLine = words[0]; // Start with the first word
+        let currentCharCount = words[0].length;
+
+        for (let i = 1; i < words.length; i++) {
+            const testLine = currentLine + ' ' + words[i]; // Test adding the next word
+            currentCharCount += words[i].length + 1;
+
+            // Check if the text width exceeds the maximum line width
+            if (currentCharCount <= maxLineWidth) {
+                // The line fits within the width, add the next word
+                currentLine = testLine;
+            } else {
+                // The line width exceeds the maximum, start a new line
+                lines.push(currentLine);
+                currentLine = words[i]; // Start a new line with the next word
+                currentCharCount = words[i].length;
+            }
+        }
+
+        // Add the remaining line
+        lines.push(currentLine);
+    } else {
+        console.log('No feedback');
+    }
+
+    // Set the fonts and drawing the text to page
+    const fontSize = Fontsize;
+    const TimesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
+
+    // Set the font, font size, and color for the TextDraw object
+    page.setFontSize(fontSize);
+    page.setFont(TimesRomanFont);
+    page.setFontColor(rgb(0, 0, 0));
+
+    let xd = Xd;
+    let yd = Yd;
+
+    for (const line of lines) {
+        page.drawText(line,
+            {
+                x: xd,
+                y: yd,
+            },)
+
+        // Move to the next line (1.2 times the font size)
+        yd -= fontSize * 1.2;
+    }
+
+    // Save to yay.pdf again
+    const modifiedPdfBytes = await pdfDoc.save();
+    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
 }

@@ -3,6 +3,7 @@ config();
 
 import { Request, Response } from 'express';
 import User from '../models/users'; // Assuming you have a User model
+import OrganizationModel from "../models/organizations";
 import * as bcrypt from 'bcryptjs';
 import { signToken } from '../utils/token';
 import { validationResult } from 'express-validator';
@@ -21,7 +22,11 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
   try {
     const { username, email, age, password, organization_code } = req.body;
 
-    console.log(req.body)
+    //check whether org_code exists
+    let org = await OrganizationModel.findOne({ org_code: organization_code});
+    if (!org) {
+      return res.status(404).json({success: false, error: "org_code not found"});
+    }
 
     // check whether the user with this email exists already
     let user = await User.findOne({ username: username, email: email });
@@ -44,7 +49,6 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
 
     // Token authentication using JWT
     const authtoken = signToken(user.username, user.email, user.org_code);
-    console.log(authtoken)
 
     // Response
     success = true;
@@ -71,7 +75,7 @@ export async function login(req: Request, res: Response): Promise<any> {
     const AdminEmail = process.env.ADMIN_EMAIL;
 
     if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
-      const authtoken = signToken(username, password, '6969');
+      const authtoken = signToken(username, AdminEmail as string, '6969');
 
       res.status(200).json({ success: true, userType: 'admin', authtoken });
       return;
