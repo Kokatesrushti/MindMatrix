@@ -34,6 +34,9 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    carreerOptions: {
+        type: Array,
+    },
     testResults: [testResultSchema], //array of test results
 });
 

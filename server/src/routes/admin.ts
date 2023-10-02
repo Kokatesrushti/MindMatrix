@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from 'express';
 import { body } from 'express-validator';
-import { createOrganization, adminDashboard, getOrganization, getAllOrg, getUserInfo, getUsersOrg} from '../controllers/adminController';
+import { createOrganization, adminDashboard, getOrganization, getAllOrg, getUserInfo, getUsersOrg, sendCodetoEmail} from '../controllers/adminController';
 import fetchUser from '../middlewares/fetchUser';
 
 const router: Router = express.Router();
@@ -19,5 +19,7 @@ router.post('/getusersorg', getUsersOrg);
 router.post('/getuserinfo', getUserInfo);
 
 router.get('/dashboard', adminDashboard);
+
+router.post('/sendcodetoemail', sendCodetoEmail);
 
 export default router;

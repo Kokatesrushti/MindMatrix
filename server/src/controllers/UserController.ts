@@ -282,3 +282,31 @@ export async function feedbackTest(req: Request, res: Response): Promise<void> {
   res.status(200).json({ success: true });
   return;
 }
+
+export async function carreerOptions(req: Request, res: Response): Promise<void> {
+  try {
+    const filter = {
+      username: req.user.username,
+      email: req.user.email,
+    };
+
+    const paths = req.body.carreerOptions;
+
+    const result = await User.findOneAndUpdate(filter, { carreerOptions: paths }, { new: true });
+
+    if (result) {
+      // The update happened and a document was modified.
+      res.status(200).json({success: true});
+      return;
+    } else {
+      res.status(404).json({success: false, error: 'Document not found and not updated'});
+      return;
+    }
+
+  } catch (error) {
+    // Handle any other errors that might occur during the try block
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+
+}
