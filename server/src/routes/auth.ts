@@ -32,7 +32,7 @@ router.post('/forgotpassword', [
 ], validate, forgotPassword);
 
 router.post('/resetpassword', [
-  body('password', 'Password should contain at least 5 characters').isLength({ min: 5 }),
+  body('newPassword', 'Password should contain at least 5 characters').isLength({ min: 5 }),
 ], validate, resetPassword);
 
 export default router;
