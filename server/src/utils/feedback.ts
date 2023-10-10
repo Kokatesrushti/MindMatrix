@@ -103,52 +103,52 @@ export const feedbackData: FeedbackData = {
     },
     "Study Skills Set Profile": {
         "Time Management and Procrastination": {
-            "1-10": "Your current time management and procrastination strategies may benefit from significant improvement. Consider exploring effective techniques and resources to enhance your productivity and overcome procrastination tendencies.",
-            "11-20": "You are making progress in your journey to conquer procrastination and manage your time effectively. Keep refining your skills and adopting valuable strategies to elevate your productivity and focus further.",
-            "21-30": "Your efforts in time management and combating procrastination are commendable. Continue to fine-tune your approach and leverage proven methods to optimize your productivity and minimize procrastination challenges.",
-            "31-40": "Your mastery of time management and triumph over procrastination are remarkable. Your disciplined approach and effective strategies are yielding impressive results. Keep up the exceptional work as you enjoy heightened productivity and focus in your endeavours."
+            "1-8": "Your current time management and procrastination strategies may benefit from significant improvement. Consider exploring effective techniques and resources to enhance your productivity and overcome procrastination tendencies.",
+            "9-16": "You are making progress in your journey to conquer procrastination and manage your time effectively. Keep refining your skills and adopting valuable strategies to elevate your productivity and focus further.",
+            "17-24": "Your efforts in time management and combating procrastination are commendable. Continue to fine-tune your approach and leverage proven methods to optimize your productivity and minimize procrastination challenges.",
+            "25-32": "Your mastery of time management and triumph over procrastination are remarkable. Your disciplined approach and effective strategies are yielding impressive results. Keep up the exceptional work as you enjoy heightened productivity and focus in your endeavours."
         },
         "Concentration and Memory": {
-            "1-10": "Your current score suggests there is ample room for improvement in terms of concentration and memory. Focusing on dedicated techniques and strategies can help you enhance these cognitive skills and boost your overall learning experience.",
-            "11-20": "You are demonstrating effort in cultivating better concentration and memory skills. By exploring targeted methods and consistent practice, you can further elevate your abilities and elevate your capacity to retain and recall information.",
-            "21-30": "Your concentration and memory skills are in a commendable range, indicating a solid foundation. Building upon this foundation with advanced techniques and continued practice will empower you to reach even higher levels of cognitive efficiency.",
-            "31-40": "Congratulations, your exceptional score reflects a strong command over concentration and memory. Your diligent efforts have paid off, enabling you to excel in absorbing and retaining information. Continue fine-tuning your skills to maximize your cognitive potential and achieve remarkable academic and personal growth."
+            "1-8": "Your current score suggests there is ample room for improvement in terms of concentration and memory. Focusing on dedicated techniques and strategies can help you enhance these cognitive skills and boost your overall learning experience.",
+            "9-16": "You are demonstrating effort in cultivating better concentration and memory skills. By exploring targeted methods and consistent practice, you can further elevate your abilities and elevate your capacity to retain and recall information.",
+            "17-24": "Your concentration and memory skills are in a commendable range, indicating a solid foundation. Building upon this foundation with advanced techniques and continued practice will empower you to reach even higher levels of cognitive efficiency.",
+            "25-32": "Congratulations, your exceptional score reflects a strong command over concentration and memory. Your diligent efforts have paid off, enabling you to excel in absorbing and retaining information. Continue fine-tuning your skills to maximize your cognitive potential and achieve remarkable academic and personal growth."
         },
         "Study Aids and Note-Taking": {
-            "1-10": "Your score indicates room for improvement in terms of effective study aids and note-taking strategies. Exploring various techniques and incorporating them into your routine can significantly enhance your learning process.",
-            "11-20": "You are making efforts to implement study aids and note-taking practices. By refining these skills and consistently utilizing them, you can enhance your ability to absorb and retain information more efficiently.",
-            "21-30": "Your score suggests a solid foundation in study aids and note-taking. Continue to develop and fine-tune these strategies to further streamline your learning process and increase your understanding of the material.",
-            "31-40": "Congratulations on your impressive score, which reflects your adeptness in utilizing study aids and note-taking effectively. Your dedicated efforts are paying off, enabling you to excel in comprehending and retaining information. Keep refining your techniques to reach new heights of academic success."
+            "1-8": "Your score indicates room for improvement in terms of effective study aids and note-taking strategies. Exploring various techniques and incorporating them into your routine can significantly enhance your learning process.",
+            "9-16": "You are making efforts to implement study aids and note-taking practices. By refining these skills and consistently utilizing them, you can enhance your ability to absorb and retain information more efficiently.",
+            "17-24": "Your score suggests a solid foundation in study aids and note-taking. Continue to develop and fine-tune these strategies to further streamline your learning process and increase your understanding of the material.",
+            "25-32": "Congratulations on your impressive score, which reflects your adeptness in utilizing study aids and note-taking effectively. Your dedicated efforts are paying off, enabling you to excel in comprehending and retaining information. Keep refining your techniques to reach new heights of academic success."
         },
         "Test Strategies and Test Anxiety": {
-            "1-10": "Opportunities exist for developing effective test strategies and managing test anxiety. Embrace targeted techniques and resources to build your confidence and refine your approach to exams.",
-            "11-20": "You're making strides in improving your test strategies and coping with test anxiety. Further exploration and practice will help solidify your skills, enabling you to approach exams with increased assurance.",
-            "21-30": "Your commitment to mastering test strategies and managing test anxiety is evident. Continue to refine your techniques through consistent effort and utilize resources to achieve optimal results in exams.",
-            "31-40": "Impressive proficiency in test strategies and adeptly handling test anxiety are evident in your performance. Your dedicated preparation and effective techniques are positioning you for excellence in exams. Stay the course for continued success."
+            "1-8": "Opportunities exist for developing effective test strategies and managing test anxiety. Embrace targeted techniques and resources to build your confidence and refine your approach to exams.",
+            "9-16": "You're making strides in improving your test strategies and coping with test anxiety. Further exploration and practice will help solidify your skills, enabling you to approach exams with increased assurance.",
+            "17-24": "Your commitment to mastering test strategies and managing test anxiety is evident. Continue to refine your techniques through consistent effort and utilize resources to achieve optimal results in exams.",
+            "25-32": "Impressive proficiency in test strategies and adeptly handling test anxiety are evident in your performance. Your dedicated preparation and effective techniques are positioning you for excellence in exams. Stay the course for continued success."
         },
         "Organizing and Processing Information": {
-            "1-10": "Opportunities for improvement lie ahead in your organizational and information-processing abilities. Consider adopting effective techniques and strategies to streamline your approach.",
-            "11-20": "You're actively engaged in developing your organizational and information-processing skills. Embrace further refinement through structured methods and watch your efficiency grow.",
-            "21-30": "Your organizational and information processing capabilities are solid, showcasing your commitment to effective learning. Continue to explore advanced strategies to enhance your skills even further.",
-            "31-40": "Impressive mastery of organizational and information-processing skills is evident in your approach. Your ability to efficiently handle and process information is a valuable asset that contributes significantly to your academic and personal success."
+            "1-8": "Opportunities for improvement lie ahead in your organizational and information-processing abilities. Consider adopting effective techniques and strategies to streamline your approach.",
+            "9-16": "You're actively engaged in developing your organizational and information-processing skills. Embrace further refinement through structured methods and watch your efficiency grow.",
+            "17-24": "Your organizational and information processing capabilities are solid, showcasing your commitment to effective learning. Continue to explore advanced strategies to enhance your skills even further.",
+            "25-32": "Impressive mastery of organizational and information-processing skills is evident in your approach. Your ability to efficiently handle and process information is a valuable asset that contributes significantly to your academic and personal success."
         },
         "Motivation and Attitude": {
-            "1-10": "Your motivation and attitude towards your goals could benefit from some nurturing. Seek ways to ignite your passion and maintain a positive mindset to drive your success.",
-            "11-20": "You are making strides in cultivating a motivated and positive attitude. Continue to fuel your aspirations and embrace challenges with a proactive mindset.",
-            "21-30": "Your motivation and attitude are commendable, reflecting your dedication to achieving your objectives. Sustain this positive outlook as you navigate through challenges and seize opportunities.",
-            "31-40": "Your exceptional motivation and unwavering positive attitude are truly inspiring. Your proactive approach and enthusiasm set a strong foundation for continuous growth and remarkable accomplishments."
+            "1-8": "Your motivation and attitude towards your goals could benefit from some nurturing. Seek ways to ignite your passion and maintain a positive mindset to drive your success.",
+            "9-16": "You are making strides in cultivating a motivated and positive attitude. Continue to fuel your aspirations and embrace challenges with a proactive mindset.",
+            "17-24": "Your motivation and attitude are commendable, reflecting your dedication to achieving your objectives. Sustain this positive outlook as you navigate through challenges and seize opportunities.",
+            "25-32": "Your exceptional motivation and unwavering positive attitude are truly inspiring. Your proactive approach and enthusiasm set a strong foundation for continuous growth and remarkable accomplishments."
         },
         "Reading and Selecting the Main Idea": {
-            "1-10": "Your current performance indicates potential areas for improvement in reading comprehension and identifying main ideas. Consider focusing on dedicated practice and skill-building exercises to enhance your abilities in this crucial aspect of comprehension.",
-            "11-20": "You're making progress in the realm of reading and main idea selection. Keep honing your skills through consistent practice and engagement with various texts. By investing time and effort, you can further enhance your ability to discern and extract main ideas effectively.",
-            "21-30": "Your proficiency in reading and selecting the main idea is commendable. Continue engaging with a variety of texts to reinforce your skillset. Fine-tune your analytical prowess and main idea identification through continuous practice, leading to a deeper understanding of textual content.",
-            "31-40": "Your adeptness at reading and identifying the main idea is truly impressive. Your consistent efforts have yielded remarkable results. As you further immerse yourself in diverse texts, your ability to swiftly discern and comprehend main ideas will only continue to flourish, allowing for advanced comprehension and critical analysis."
+            "1-8": "Your current performance indicates potential areas for improvement in reading comprehension and identifying main ideas. Consider focusing on dedicated practice and skill-building exercises to enhance your abilities in this crucial aspect of comprehension.",
+            "9-16": "You're making progress in the realm of reading and main idea selection. Keep honing your skills through consistent practice and engagement with various texts. By investing time and effort, you can further enhance your ability to discern and extract main ideas effectively.",
+            "17-24": "Your proficiency in reading and selecting the main idea is commendable. Continue engaging with a variety of texts to reinforce your skillset. Fine-tune your analytical prowess and main idea identification through continuous practice, leading to a deeper understanding of textual content.",
+            "25-32": "Your adeptness at reading and identifying the main idea is truly impressive. Your consistent efforts have yielded remarkable results. As you further immerse yourself in diverse texts, your ability to swiftly discern and comprehend main ideas will only continue to flourish, allowing for advanced comprehension and critical analysis."
         },
         "Writing": {
-            "1-10": "Your writing skills show potential for growth. Focusing on fundamental aspects such as grammar, sentence structure, and organization can significantly improve your overall writing effectiveness.",
-            "11-20": "You are demonstrating a foundation in writing, but there is room for refinement. Paying attention to clarity, and coherence, and incorporating more varied vocabulary will contribute to stronger and more engaging compositions.",
-            "21-30": "Your writing abilities are solid and promising. Continue honing your skills by refining your style, enhancing the flow of your ideas, and employing advanced techniques to captivate your readers.",
-            "31-40": "Congratulations on your exceptional writing prowess! Your command of language, effective communication, and captivating storytelling set you apart. Maintain your dedication to excellence, experimenting with different genres and techniques to further elevate your writing to new heights."
+            "1-8": "Your writing skills show potential for growth. Focusing on fundamental aspects such as grammar, sentence structure, and organization can significantly improve your overall writing effectiveness.",
+            "9-16": "You are demonstrating a foundation in writing, but there is room for refinement. Paying attention to clarity, and coherence, and incorporating more varied vocabulary will contribute to stronger and more engaging compositions.",
+            "17-24": "Your writing abilities are solid and promising. Continue honing your skills by refining your style, enhancing the flow of your ideas, and employing advanced techniques to captivate your readers.",
+            "25-32": "Congratulations on your exceptional writing prowess! Your command of language, effective communication, and captivating storytelling set you apart. Maintain your dedication to excellence, experimenting with different genres and techniques to further elevate your writing to new heights."
         },
     },
     "Emotional Intelligence": {
@@ -190,39 +190,39 @@ export const feedbackData: FeedbackData = {
     },
     "Personality": {
         "Openness": {
-            "1-10": "Your score suggests a preference for familiar and traditional ways of thinking. You tend to feel more comfortable with established routines and may be less inclined to embrace novel or unconventional ideas.\nPossible Personality Type: Conventional, Practical, Routine-Oriented\nCareer Options: Roles that involve structured tasks, attention to detail, and established procedures such as accounting, administration, data analysis, or quality control.",
-            "11-20": "You exhibit a balanced approach to new experiences, appreciating both routine and the occasional departure from the familiar. You can adapt to change while maintaining a degree of traditionalism.\nPossible Personality Type: Balanced, Adaptable, Practical Visionary\nCareer Options: Consider roles that require a mix of analytical thinking and creativity. Project management, technical writing, research analysis, or financial planning could align well with your abilities.",
-            "21-30": "Your personality reflects an openness to novel ideas and experiences, alongside an appreciation for established practices. You strike a balance between creativity and practicality.\nPossible Personality Type: Inquisitive, Versatile, Adaptive\nCareer Options: Look for roles that encourage problem-solving, innovation, and diverse perspectives. Marketing, design, education, or roles in technology could be avenues for your talents.",
-            "31-40": "Your open-mindedness and curiosity are evident, as you actively seek out new experiences and ideas. You thrive in dynamic environments and enjoy exploring uncharted territory.\nPossible Personality Type: Curious, Imaginative, Innovative\nCareer Options: Pursue roles that emphasize creativity, exploration, and the generation of new ideas. Entrepreneurship, research, creative arts, or roles in emerging technologies may resonate with your disposition.",
-            "41-50": "Your high openness underscores a profound appreciation for creativity, intellectual pursuits, and unconventional thinking. You find inspiration in a wide array of experiences and are drawn to pushing boundaries.\nPossible Personality Type: Creative, Visionary, Intellectual Explorer\nCareer Options: Seek roles that encourage innovation, abstract thinking, and interdisciplinary collaboration. Writing, artistic endeavors, academia, or roles in cutting-edge fields could provide avenues for your passions."
+            "1-10": "Your score suggests a preference for familiar and traditional ways of thinking. You tend to feel more comfortable with established routines and may be less inclined to embrace novel or unconventional ideas.",
+            "11-20": "You exhibit a balanced approach to new experiences, appreciating both routine and the occasional departure from the familiar. You can adapt to change while maintaining a degree of traditionalism.",
+            "21-30": "Your personality reflects an openness to novel ideas and experiences, alongside an appreciation for established practices. You strike a balance between creativity and practicality.",
+            "31-40": "Your open-mindedness and curiosity are evident, as you actively seek out new experiences and ideas. You thrive in dynamic environments and enjoy exploring uncharted territory.",
+            "41-50": "Your high openness underscores a profound appreciation for creativity, intellectual pursuits, and unconventional thinking. You find inspiration in a wide array of experiences and are drawn to pushing boundaries."
         },
         "Conscientiousness": {
-            "1-10": "Your score suggests that you have a more relaxed attitude toward organization and planning. You might prefer flexibility and spontaneity over strict routines, and you may find it challenging to stick to long-term goals.\nPossible Personality Type: Unstructured, Free-Spirited, Creative\nCareer Options: Roles that allow for creative expression, flexible schedules, and minimal routine could be appealing. Consider careers in the arts, entrepreneurship, entertainment, or freelancing.",
-            "11-20": "You display some relaxed tendencies, yet you can also demonstrate a degree of organization and responsibility when necessary. You strike a balance between structure and adaptability.\nPossible Personality Type: Flexible, Adaptable, Laid-Back Achiever\nCareer Options: You might excel in roles that require a mix of creativity and reliability. Look into careers such as marketing, project management, consulting, or event planning.",
-            "21-30": "You maintain a balanced approach to organization and responsibility, effectively managing your tasks and goals. You can shift between focused, goal-oriented work and more flexible activities.\nPossible Personality Type: Balanced, Diligent, Methodical\nCareer Options: Consider roles that involve a mix of planning, execution, and adaptability. Project management, administrative roles, data analysis, or research positions could be suitable.",
-            "31-40": "Your conscientious tendencies are noticeable, and you value structure, planning, and goal attainment. You tend to be reliable, detail-oriented, and committed to your tasks.\nPossible Personality Type: Dependable, Detail-Focused, Goal-Driven\nCareer Options: Pursue roles that require precision, organization, and meticulousness. Accounting, quality control, data management, or executive assistance could be well-aligned with your personality.",
-            "41-50": "Your conscientiousness is a dominant trait, and you excel in planning, organization, and goal achievement. You take your responsibilities seriously and are known for your reliability.\nPossible Personality Type: Methodical, Disciplined, Achievement-Oriented\nCareer Options: Seek roles that demand meticulous attention to detail, project management skills, and consistent follow-through. Consider careers in finance, operations management, research, or regulatory compliance."
+            "1-10": "Your score suggests that you have a more relaxed attitude toward organization and planning. You might prefer flexibility and spontaneity over strict routines, and you may find it challenging to stick to long-term goals.",
+            "11-20": "You display some relaxed tendencies, yet you can also demonstrate a degree of organization and responsibility when necessary. You strike a balance between structure and adaptability.",
+            "21-30": "You maintain a balanced approach to organization and responsibility, effectively managing your tasks and goals. You can shift between focused, goal-oriented work and more flexible activities.",
+            "31-40": "Your conscientious tendencies are noticeable, and you value structure, planning, and goal attainment. You tend to be reliable, detail-oriented, and committed to your tasks.",
+            "41-50": "Your conscientiousness is a dominant trait, and you excel in planning, organization, and goal achievement. You take your responsibilities seriously and are known for your reliability."
         },
         "Extroversion": {
-            "1-10": "Your score indicates that you tend to be more introverted, preferring solitary activities and introspection. You might find social interactions draining and may feel more comfortable in quieter, less stimulating environments.\nPossible Personality Type: Introverted, Reflective, Thoughtful\nCareer Options: Roles that require deep analysis, creativity, and independent work such as writing, research, programming, graphic design, or artistry.",
-            "11-20": "You display some introverted tendencies, but you are also open to social interactions and may engage in them occasionally. You strike a balance between solitary pursuits and group activities.\nPossible Personality Type: Balanced, Adaptable, Reserved-Extrovert\nCareer Options: A wide range of options is available to you, including roles that involve both independent work and occasional collaboration. Examples include teaching, accounting, project management, or technical support.",
-            "21-30": "You possess a healthy balance between introversion and extroversion, comfortably engaging in both solitary tasks and social interactions. You enjoy spending time with others but also value your personal space.\nPossible Personality Type: Ambivert, Socially Versatile, Team Player\nCareer Options: Your versatility opens doors to various career paths. Consider roles that involve teamwork, client interaction, and balanced work environments. Sales, marketing, human resources, or event planning could be suitable options.",
-            "31-40": "Your extroverted tendencies are noticeable, and you thrive in social settings. You are energized by interactions with others and enjoy being part of groups.\nPossible Personality Type: Outgoing, Sociable, Energetic\nCareer Options: Pursue roles that involve frequent interaction with people, leadership, and dynamic environments. Public relations, customer service, teaching, or counseling may align well with your personality.",
-            "41-50": "Your extroversion is a dominant trait, and you are naturally drawn to social interactions. You derive energy and excitement from engaging with others, often taking on leadership roles.\nPossible Personality Type: Extroverted, Enthusiastic, Charismatic\nCareer Options: Seek roles that require extensive networking, public speaking, and leading groups. Sales management, event coordination, public speaking, or entrepreneurship could be highly fulfilling paths for you."
+            "1-10": "Your score indicates that you tend to be more introverted, preferring solitary activities and introspection. You might find social interactions draining and may feel more comfortable in quieter, less stimulating environments.",
+            "11-20": "You display some introverted tendencies, but you are also open to social interactions and may engage in them occasionally. You strike a balance between solitary pursuits and group activities.",
+            "21-30": "You possess a healthy balance between introversion and extroversion, comfortably engaging in both solitary tasks and social interactions. You enjoy spending time with others but also value your personal space.",
+            "31-40": "Your extroverted tendencies are noticeable, and you thrive in social settings. You are energized by interactions with others and enjoy being part of groups.",
+            "41-50": "Your extroversion is a dominant trait, and you are naturally drawn to social interactions. You derive energy and excitement from engaging with others, often taking on leadership roles."
         },
         "Agreeableness": {
-            "1-10": "Your score indicates that you prioritize individual goals and assertiveness over conforming to others' expectations. You may prefer direct communication and may not be as concerned with maintaining harmony in social interactions.\nPossible Personality Type: Independent, Assertive, Objective\nCareer Options: Roles that require decisive decision-making, negotiation, and analytical thinking, such as entrepreneurship, law, research, or engineering.",
-            "11-20": "You display a balanced mix of assertiveness and cooperation. While you value your own needs, you are also considerate of others' perspectives and can adapt your communication style accordingly.\nPossible Personality Type: Pragmatic, Diplomatic, Balanced\nCareer Options: Consider roles that involve problem-solving, project management, and coordination where you can utilize your ability to navigate different viewpoints. Consulting, project management, logistics, or data analysis could be suitable paths.",
-            "21-30": "Your personality showcases a harmonious blend of assertiveness and empathy. You tend to seek compromise and find satisfaction in both individual accomplishments and collaborative efforts.\nPossible Personality Type: Empathetic, Flexible, Collaborative\nCareer Options: Look for roles that involve teamwork, customer service, and relationship-building. Social work, human resources, teaching, or client-facing positions align well with your strengths.",
-            "31-40": "Your agreeable nature is evident in your interactions, and you excel at maintaining positive relationships. You value cooperation and may prioritize group cohesion over individual achievements.\nPossible Personality Type: Cooperative, Supportive, Amiable\nCareer Options: Pursue roles that involve mentoring, coaching, or community engagement. Nonprofit work, counseling, healthcare, or teaching may be fulfilling avenues for you.",
-            "41-50": "Your high agreeableness is a standout trait, highlighting your commitment to harmony and cooperation. You excel at fostering positive environments and nurturing connections with others.\nPossible Personality Type: Compassionate, Empathic, Harmonious\nCareer Options: Seek roles where interpersonal skills are paramount. Humanitarian work, social services, counseling, or leadership positions that require team building and conflict resolution could be well-suited to your personality."
+            "1-10": "Your score indicates that you prioritize individual goals and assertiveness over conforming to others' expectations. You may prefer direct communication and may not be as concerned with maintaining harmony in social interactions.",
+            "11-20": "You display a balanced mix of assertiveness and cooperation. While you value your own needs, you are also considerate of others' perspectives and can adapt your communication style accordingly.",
+            "21-30": "Your personality showcases a harmonious blend of assertiveness and empathy. You tend to seek compromise and find satisfaction in both individual accomplishments and collaborative efforts.",
+            "31-40": "Your agreeable nature is evident in your interactions, and you excel at maintaining positive relationships. You value cooperation and may prioritize group cohesion over individual achievements.",
+            "41-50": "Your high agreeableness is a standout trait, highlighting your commitment to harmony and cooperation. You excel at fostering positive environments and nurturing connections with others."
         },
         "Neuroticism": {
-            "1-10": "Your score suggests that you have a strong emotional resilience and are adept at managing stress and negative emotions. You tend to stay calm under pressure and approach challenges with a composed demeanor.\nPossible Personality Type: Resilient, Calm, Emotionally Stable\nCareer Options: Roles that require composure, crisis management, and analytical thinking such as emergency services, project management, scientific research, or law enforcement.",
-            "11-20": "You exhibit a balanced approach to emotions, demonstrating an ability to handle stress while acknowledging emotional responses. You are capable of adapting to different situations with a steady outlook.\nPossible Personality Type: Balanced, Adaptable, Realistic\nCareer Options: Consider roles that involve problem-solving, conflict resolution, and adaptability. Consulting, marketing, information technology, or financial analysis could align well with your abilities.",
-            "21-30": "Your emotional responses are generally balanced, with occasional fluctuations in response to stressors. You exhibit a healthy range of emotional expression and are capable of managing moderate stress.\nPossible Personality Type: Stable, Flexible, Self-Aware\nCareer Options: Look for roles that value emotional intelligence, teamwork, and interpersonal dynamics. Human resources, counseling, teaching, or creative professions may resonate with your abilities.",
-            "31-40": "You may experience heightened emotional responses in certain situations, indicating a sensitivity to stressors. However, you are also likely to possess effective coping mechanisms and can recover from setbacks.\nPossible Personality Type: Sensitive, Reflective, Resilient Learner\nCareer Options: Pursue roles that encourage personal growth, creative expression, and communication. Writing, artistic pursuits, counseling, or roles in the helping professions could be avenues to explore.",
-            "41-50": "Your emotional experiences tend to be intense, and you may face challenges in managing stress and negative emotions. However, your depth of emotional awareness can also lead to profound self-discovery and empathy for others.\nPossible Personality Type: Emotional, Empathetic, Introspective\nCareer Options: Seek roles that center around emotional support, creativity, and individual growth. Therapy, art therapy, social work, or roles in the performing arts could provide outlets for your emotional depth."
+            "1-10": "Your score suggests that you have a strong emotional resilience and are adept at managing stress and negative emotions. You tend to stay calm under pressure and approach challenges with a composed demeanor. research, or law enforcement.",
+            "11-20": "You exhibit a balanced approach to emotions, demonstrating an ability to handle stress while acknowledging emotional responses. You are capable of adapting to different situations with a steady outlook.nancial analysis could align well with your abilities.",
+            "21-30": "Your emotional responses are generally balanced, with occasional fluctuations in response to stressors. You exhibit a healthy range of emotional expression and are capable of managing moderate stress. professions may resonate with your abilities.",
+            "31-40": "You may experience heightened emotional responses in certain situations, indicating a sensitivity to stressors. However, you are also likely to possess effective coping mechanisms and can recover from setbacks.r roles in the helping professions could be avenues to explore.",
+            "41-50": "Your emotional experiences tend to be intense, and you may face challenges in managing stress and negative emotions. However, your depth of emotional awareness can also lead to profound self-discovery and empathy for others. the performing arts could provide outlets for your emotional depth."
         }
     },
     "Learning Style": {
@@ -373,66 +373,241 @@ export const feedbackData: FeedbackData = {
     },
     "Left Brain Dominance": {
         "Analytical Thinking": {
-            "1-3": "Minimal logical problem-solving ability.",
-            "4-6": "Some logical problem-solving skills.",
-            "7-8": "Strong logical problem-solving abilities.",
-            "9-10": "Exceptional logical problem-solving skills."
+            "1-3": "Analytical Thinking: Minimal logical problem-solving ability.",
+            "4-6": "Analytical Thinking: Some logical problem-solving skills.",
+            "7-8": "Analytical Thinking: Strong logical problem-solving abilities.",
+            "9-10": "Analytical Thinking: Exceptional logical problem-solving skills."
         },
         "Language Skills": {
-            "1-3": "Difficulty with verbal communication and grammar.",
-            "4-6": "Adequate verbal communication and grammar.",
-            "7-8": "Proficient verbal communication and grammar.",
-            "9-10": "Advanced verbal communication and grammar."
+            "1-3": "Language Skills: Difficulty with verbal communication and grammar.",
+            "4-6": "Language Skills: Adequate verbal communication and grammar.",
+            "7-8": "Language Skills: Proficient verbal communication and grammar.",
+            "9-10": "Language Skills: Advanced verbal communication and grammar."
         },
         "Math and Logic": {
-            "1-3": "Struggles with numbers and reasoning.",
-            "4-6": "Basic comfort with numbers and reasoning.",
-            "7-8": "Comfortable with numbers and reasoning.",
-            "9-10": "Highly skilled with numbers and reasoning."
+            "1-3": "Math and Logic: Struggles with numbers and reasoning.",
+            "4-6": "Math and Logic: Basic comfort with numbers and reasoning.",
+            "7-8": "Math and Logic: Comfortable with numbers and reasoning.",
+            "9-10": "Math and Logic: Highly skilled with numbers and reasoning."
         },
         "Structured Planning": {
-            "1-3": "Challenges in organizing tasks and goals.",
-            "4-6": "Can organize tasks and set goals.",
-            "7-8": "Effectively organizes tasks and goals.",
-            "9-10": "Expertly organizes tasks and goals."
+            "1-3": "Structured Planning: Challenges in organizing tasks and goals.",
+            "4-6": "Structured Planning: Can organize tasks and set goals.",
+            "7-8": "Structured Planning: Effectively organizes tasks and goals.",
+            "9-10": "Structured Planning: Expertly organizes tasks and goals."
         },
         "Sequential Processing": {
-            "1-3": "Difficulty following linear sequences.",
-            "4-6": "Follows linear sequences with effort.",
-            "7-8": "Easily follows linear sequences.",
-            "9-10": "Seamlessly follows linear sequences."
+            "1-3": "Sequential Processing: Difficulty following linear sequences.",
+            "4-6": "Sequential Processing: Follows linear sequences with effort.",
+            "7-8": "Sequential Processing: Easily follows linear sequences.",
+            "9-10": "Sequential Processing: Seamlessly follows linear sequences."
         }
     },
     "Right Brain Dominance": {
         "Creativity": {
-            "1-3": "Minimal capacity for imaginative thinking.",
-            "4-6": "Some ability for imaginative and original thinking.",
-            "7-8": "Strong capacity for imaginative and original thinking.",
-            "9-10": "Exceptional ability for imaginative and original thinking."
+            "1-3": "Creativity: Minimal capacity for imaginative thinking.",
+            "4-6": "Creativity: Some ability for imaginative and original thinking.",
+            "7-8": "Creativity: Strong capacity for imaginative and original thinking.",
+            "9-10": "Creativity: Exceptional ability for imaginative and original thinking."
         },
         "Visual Perception": {
-            "1-3": "Difficulty noticing shapes and colors.",
-            "4-6": "Adequate sensitivity to shapes and colors.",
-            "7-8": "Proficient in noticing shapes and colors.",
-            "9-10": "Highly skilled in noticing shapes and colors."
+            "1-3": "Visual Perception: Difficulty noticing shapes and colors.",
+            "4-6": "Visual Perception: Adequate sensitivity to shapes and colors.",
+            "7-8": "Visual Perception: Proficient in noticing shapes and colors.",
+            "9-10": "Visual Perception: Highly skilled in noticing shapes and colors."
         },
         "Intuition": {
-            "1-3": "Struggles to rely on instincts or gut feelings.",
-            "4-6": "Beginning to rely on instincts and hunches.",
-            "7-8": "Comfortable relying on instincts and gut feelings.",
-            "9-10": "Highly intuitive, relies on instincts effectively."
+            "1-3": "Intuition: Struggles to rely on instincts or gut feelings.",
+            "4-6": "Intuition: Beginning to rely on instincts and hunches.",
+            "7-8": "Intuition: Comfortable relying on instincts and gut feelings.",
+            "9-10": "Intuition: Highly intuitive, relies on instincts effectively."
         },
         "Holistic Thinking": {
-            "1-3": "Trouble seeing the big picture and making connections.",
-            "4-6": "Can grasp the bigger picture and make connections.",
-            "7-8": "Easily sees the big picture and makes connections.",
-            "9-10": "Masters the bigger picture and makes intricate connections."
+            "1-3": "Holistic Thinking: Trouble seeing the big picture and making connections.",
+            "4-6": "Holistic Thinking: Can grasp the bigger picture and make connections.",
+            "7-8": "Holistic Thinking: Easily sees the big picture and makes connections.",
+            "9-10": "Holistic Thinking: Masters the bigger picture and makes intricate connections."
         },
         "Artistic Abilities": {
-            "1-3": "Challenges in artistic expression.",
-            "4-6": "Basic skills in artistic expression.",
-            "7-8": "Proficient artistic expression.",
-            "9-10": "Exceptional skills in artistic expression."
+            "1-3": "Artistic Abilities: Challenges in artistic expression.",
+            "4-6": "Artistic Abilities: Basic skills in artistic expression.",
+            "7-8": "Artistic Abilities: Proficient artistic expression.",
+            "9-10": "Artistic Abilities: Exceptional skills in artistic expression."
         }
     }
 } as const;
+
+
+export const carreerSuggestions: FeedbackData = {
+    "Personality": {
+        "Openness": {
+            "1-10": "Roles that involve structured tasks, attention to detail, and established procedures such as accounting, administration, data analysis, or quality control.",
+            "11-20": "Consider roles that require a mix of analytical thinking and creativity. Project management, technical writing, research analysis, or financial planning could align well with your abilities.",
+            "21-30": "Look for roles that encourage problem-solving, innovation, and diverse perspectives. Marketing, design, education, or roles in technology could be avenues for your talents.",
+            "31-40": "Pursue roles that emphasize creativity, exploration, and the generation of new ideas. Entrepreneurship, research, creative arts, or roles in emerging technologies may resonate with your disposition.",
+            "41-50": "Seek roles that encourage innovation, abstract thinking, and interdisciplinary collaboration. Writing, artistic endeavors, academia, or roles in cutting-edge fields could provide avenues for your passions."
+        },
+        "Conscientiousness": {
+            "1-10": "Roles that allow for creative expression, flexible schedules, and minimal routine could be appealing. Consider careers in the arts, entrepreneurship, entertainment, or freelancing.",
+            "11-20": "You might excel in roles that require a mix of creativity and reliability. Look into careers such as marketing, project management, consulting, or event planning.",
+            "21-30": "Consider roles that involve a mix of planning, execution, and adaptability. Project management, administrative roles, data analysis, or research positions could be suitable.",
+            "31-40": "Pursue roles that require precision, organization, and meticulousness. Accounting, quality control, data management, or executive assistance could be well-aligned with your personality.",
+            "41-50": "Seek roles that demand meticulous attention to detail, project management skills, and consistent follow-through. Consider careers in finance, operations management, research, or regulatory compliance."
+        },
+        "Extroversion": {
+            "1-10": "Roles that require deep analysis, creativity, and independent work such as writing, research, programming, graphic design, or artistry.",
+            "11-20": "A wide range of options is available to you, including roles that involve both independent work and occasional collaboration. Examples include teaching, accounting, project management, or technical support.",
+            "21-30": "Your versatility opens doors to various career paths. Consider roles that involve teamwork, client interaction, and balanced work environments. Sales, marketing, human resources, or event planning could be suitable options.",
+            "31-40": "Pursue roles that involve frequent interaction with people, leadership, and dynamic environments. Public relations, customer service, teaching, or counseling may align well with your personality.",
+            "41-50": "Seek roles that require extensive networking, public speaking, and leading groups. Sales management, event coordination, public speaking, or entrepreneurship could be highly fulfilling paths for you."
+        },
+        "Agreeableness": {
+            "1-10": "Roles that require decisive decision-making, negotiation, and analytical thinking, such as entrepreneurship, law, research, or engineering.",
+            "11-20": "Consider roles that involve problem-solving, project management, and coordination where you can utilize your ability to navigate different viewpoints. Consulting, project management, logistics, or data analysis could be suitable paths.",
+            "21-30": "Look for roles that involve teamwork, customer service, and relationship-building. Social work, human resources, teaching, or client-facing positions align well with your strengths.",
+            "31-40": "Pursue roles that involve mentoring, coaching, or community engagement. Nonprofit work, counseling, healthcare, or teaching may be fulfilling avenues for you.",
+            "41-50": "Seek roles where interpersonal skills are paramount. Humanitarian work, social services, counseling, or leadership positions that require team building and conflict resolution could be well-suited to your personality."
+        },
+        "Neuroticism": {
+            "1-10": "Roles that require composure, crisis management, and analytical thinking such as emergency services, project management, scientific research, or law enforcement.",
+            "11-20": "Consider roles that involve problem-solving, conflict resolution, and adaptability. Consulting, marketing, information technology, or financial analysis could align well with your abilities.",
+            "21-30": "Look for roles that value emotional intelligence, teamwork, and interpersonal dynamics. Human resources, counseling, teaching, or creative professions may resonate with your abilities.",
+            "31-40": "Pursue roles that encourage personal growth, creative expression, and communication. Writing, artistic pursuits, counseling, or roles in the helping professions could be avenues to explore.",
+            "41-50": "Seek roles that center around emotional support, creativity, and individual growth. Therapy, art therapy, social work, or roles in the performing arts could provide outlets for your emotional depth."
+        }
+    },
+    "Aptitude": {
+        "Linguistic": {
+            "1-4": "Consider roles that involve basic communication skills, such as data entry, administrative support, or entry-level customer service. These roles can provide a foundation for further skill development and growth.",
+            "5-8": "Explore roles that require clear communication and organizational skills, such as office management, content coordination, or junior marketing positions. These roles can help you build on your current strengths and develop your communication skills.",
+            "9-12": "Consider careers in fields that involve written communication, research, or analysis. Roles in marketing, content creation, research assistance, or technical writing could be a great fit, as they require effective communication and critical thinking.",
+            "13-16": "Pursue roles that involve advanced communication and critical thinking. Careers in public relations, copywriting, journalism, or research analysis could be a natural fit for your skills and interests.",
+            "17-20": "Your exceptional verbal reasoning skills position you for roles that require high-level communication, strategic thinking, and leadership. Consider careers in law, academia, content strategy, or public speaking, where your ability to convey complex ideas is highly valuable."
+        },
+        "Numerical": {
+            "1-4": "Consider roles that require basic numeracy skills, such as data entry, administrative support, or entry-level positions in customer service. These roles can provide a foundation for further skill development and growth.",
+            "5-8": "Explore roles that involve managing basic numerical data and calculations, such as inventory control, administrative roles, or positions in retail. Enhancing your numeracy skills will support your success in these roles.",
+            "9-12": "Consider roles that involve financial analysis, data entry, or junior positions in accounting. Pursue opportunities in administrative or office management roles where your numerical skills are valuable.",
+            "13-16": "Pursue careers in fields that require analytical thinking and problem-solving, such as financial analysis, market research, or junior roles in engineering or science. Your skills can also be beneficial in roles that involve data analysis.",
+            "17-20": "Your exceptional numerical reasoning skills position you for roles that involve advanced data analysis, financial modeling, and statistical analysis. Consider careers in finance, data science, engineering, or research where your numerical skills will be highly valued."
+        },
+        "Mechanical": {
+            "1-4": "Consider roles that involve basic mechanical tasks, such as assembly line work, equipment operation, or assistant positions in maintenance. These roles can provide hands-on experience and opportunities for skill development.",
+            "5-8": "Explore roles that require mechanical aptitude, such as machine operator, technician assistant, or entry-level positions in manufacturing or maintenance. These roles can help you further develop your skills.",
+            "9-12": "Consider careers that involve technical tasks and problem-solving, such as mechanical technician, quality control inspector, or junior positions in engineering. These roles will allow you to apply and enhance your mechanical skills.",
+            "13-16": "Pursue roles that require higher-level mechanical thinking, such as machine maintenance technician, engineering technician, or roles in the automotive industry. Your skills can be valuable in industries that require technical expertise.",
+            "17-20": "Your exceptional mechanical reasoning skills open doors to careers in engineering, technical design, robotics, or advanced positions in maintenance and manufacturing. Consider roles that require in-depth understanding and application of mechanical principles."
+        },
+        "Abstract": {
+            "1-4": "Focus on enhancing your visual thinking, pattern recognition, and problem-solving abilities. Engaging in activities like puzzles, spatial reasoning games, and creative arts can help you gradually develop your abstract reasoning skills. Entry-level positions in fields like data entry, administrative support, or basic technical roles could be a starting point.",
+            "5-8": "Consider roles that require attention to detail and some analytical thinking, such as quality control, data analysis, or technical support. These roles demand the ability to identify patterns and make informed decisions based on available information.",
+            "9-12": "With your improved abstract reasoning skills, you might excel in roles that involve problem-solving, data analysis, and creativity. Consider careers in graphic design, market research, data visualization, or entry-level programming, where your ability to think critically and creatively is valuable.",
+            "13-16": "Leverage your well-developed abstract reasoning skills in roles that require strategic thinking and creative problem-solving. Consider pursuing careers in fields like architecture, engineering, user experience design, or data analysis, where your ability to analyze patterns and devise innovative solutions is highly valued.",
+            "17-20": "Your exceptional abstract reasoning skills position you well for roles that involve advanced problem-solving, strategic planning, and innovation. Consider careers in research and development, advanced engineering, mathematics, or positions that require high-level analytical thinking and creativity."
+        },
+        "Spatial": {
+            "1-4": "Consider roles that require basic spatial skills, such as assembly line work, basic drafting, or introductory positions in fields like architecture and design. These roles can provide a foundation for further skill development.",
+            "5-8": "Explore opportunities in areas that involve basic spatial understanding, such as construction, interior design, or roles in fields like landscaping and event planning. Your improved skills will be valuable in these roles.",
+            "9-12": "Consider roles that involve more advanced spatial thinking, such as mechanical drafting, technical illustration, or junior positions in engineering. Pursue opportunities in design-related fields where your spatial skills will be highly useful.",
+            "13-16": "Pursue careers that require strong spatial abilities, such as architectural design, 3D modeling, or junior roles in fields like aerospace engineering. Explore opportunities in industries where visualizing and designing in three dimensions is crucial.",
+            "17-20": "Your outstanding spatial reasoning skills make you a strong candidate for roles that involve advanced 3D modeling, computer-aided design (CAD), architecture, and virtual reality design. Consider careers in creative industries where spatial visualization is key."
+        },
+        "Logical": {
+            "1-4": "Start by focusing on roles that require basic problem-solving skills, such as administrative or entry-level positions in various industries. Building a strong foundation in logical thinking will serve as a stepping stone for future growth.",
+            "5-8": "Consider roles that involve routine decision-making and problem-solving, such as data entry, customer service, or junior positions in fields like sales or operations. Continue developing your logical reasoning abilities to move forward.",
+            "9-12": "Explore roles that require critical thinking and problem-solving skills, such as research assistants, quality control analysts, or junior analysts in finance or marketing. Your ability to analyze information will be valuable in these roles.",
+            "13-16": "Consider roles that involve data analysis, programming, or quality assurance. Careers in fields like computer programming, systems analysis, or scientific research could be a good fit, as they require strong logical thinking and analytical skills.",
+            "17-20": "Pursue careers that involve complex problem-solving, strategic planning, and decision-making. Fields like data science, software engineering, management consulting, or legal analysis could greatly benefit from your exceptional logical reasoning skills."
+        }
+    },
+    "Multiple Intelligence": {
+        "Linguistic": {
+            "1-10": "• Content Creator: Start a blog, YouTube channel, or social media account where you can gradually improve your language skills by creating content. \n • Editorial Assistant: Work as an entry-level editorial assistant to gain practical experience in proofreading and basic editing. \n • Copywriter: Explore entry-level copywriting positions that involve crafting short, persuasive texts.",
+            "11-20": "• Content Writer: Consider working as a content writer, where you can continue to refine your writing skills while producing informative articles and blog posts. \n • Social Media Manager: Manage social media accounts for businesses to practice concise and effective communication. \n • Freelance Writer: Begin freelancing as a writer to gain exposure to various writing styles and topics.",
+            "21-30": "• Journalist: Pursue a career in journalism, reporting on various topics and using your strong language skills to convey information accurately. \n • Public Relations Specialist: Work in PR, where effective communication is essential for building and maintaining a positive image for clients. \n • Author: Consider writing novels, non-fiction books, or essays, leveraging your strong proficiency in language to engage readers.",
+            "31-40": "• Linguist: Explore a career in linguistics, where your exceptional language mastery can be applied to study, analyze, and document languages. \n • Professor/Teacher: Consider becoming a professor or teacher in language-related subjects, sharing your knowledge and expertise with others. \n • Diplomat/Translator: Pursue diplomatic roles or become a professional translator, using your exceptional language skills to bridge communication gaps between cultures and languages. \n • Novelist/Poet: Write novels, poetry, or literary works at the highest level of creativity and sophistication, showcasing your mastery of language.• Speechwriter: Work as a speechwriter for politicians, executives, or public figures, crafting compelling speeches that resonate with audiences."
+        },
+        "Logical": {
+            "1-10": "• Data Entry Specialist: Begin with a role that requires basic data analysis and entry, where you can build your foundational skills in handling numerical information. \n • Accounting Clerk: This role involves basic mathematics and bookkeeping, helping you improve your mathematical proficiency over time. \n • Administrative Assistant: Handling schedules, appointments, and basic problem-solving can be a suitable starting point to enhance your logical abilities.",
+            "11-20": "• Junior Data Analyst: Start working with data sets, learning data analysis tools, and strengthening your logical thinking through data interpretation. \n • IT Support Specialist: Troubleshooting computer issues and understanding system logic can further develop your logical and problem-solving skills. \n • Quality Assurance Tester: Testing software for bugs and inconsistencies requires attention to detail and logical thinking.",
+            "21-30": "• Data Scientist: Dive into complex data analysis, predictive modeling, and machine learning to leverage your strong analytical skills. \n • Software Developer: Create innovative software solutions by applying your logical abilities to design and code complex algorithms. \n • Financial Analyst: Analyze financial data, forecast trends, and provide strategic insights based on your strong mathematical proficiency. \n • Operations Research Analyst: Optimize processes, make data-driven decisions, and solve complex logistical problems in various industries.",
+            "31-40": "• Mathematician: Conduct advanced mathematical research, develop mathematical theories, and contribute to solving complex real-world problems. \n • Theoretical Physicist: Explore the fundamental laws of the universe, formulate new theories, and conduct groundbreaking research. \n • Cryptographer: Work on securing data and communications systems, utilizing your mastery of mathematical algorithms and encryption techniques. \n • Quantum Computing Scientist: Push the boundaries of computing by working on quantum algorithms and applications in a rapidly evolving field. \n • Artificial Intelligence Researcher: Lead in the development of AI systems, machine learning algorithms, and deep learning models, using your exceptional logical and mathematical intelligence."
+        },
+        "Spatial": {
+            "1-10": "• Architectural Drafter: Entry-level positions that involve creating technical drawings and plans for buildings and structures. \n • Graphic Design Assistant: Assist graphic designers with basic design tasks, such as layout and image editing. \n • Cartographic Technician: Work on basic map creation and GIS data entry tasks.",
+            "11-20": "• Graphic Designer: Further develop your graphic design skills to create visual content for various media. \n • Interior Designer: Begin working on interior design projects, focusing on spatial layouts and aesthetics. \n • Photographer: Hone your photography skills, capturing and editing images with a strong visual sense. \n • Video Editor: Explore video editing to enhance your ability to manipulate visual content. \n • Landscape Designer: Work on landscape design projects, utilizing your spatial awareness for outdoor spaces.",
+            "21-30": "• Architect: Pursue a career in architecture, where you can design buildings and spaces. \n • Industrial Designer: Use your strong visual and spatial skills to create innovative product designs. \n • Virtual Reality Developer: Enter the world of VR development, creating immersive digital environments. \n • Cartographer: Become a professional mapmaker, specializing in spatial representation. \n • Civil Engineer: Apply your spatial intelligence to design and analyze infrastructure projects.",
+            "31-40": "• Architectural Visualization Specialist: Focus on creating highly detailed architectural renderings and visualizations. \n • Industrial Design Manager: Lead teams in designing complex products, leveraging your exceptional skills. \n • Fine Artist: Pursue a career as a professional artist, creating visually stunning works of art. \n • 3D Modeler/Animator: Work on advanced 3D modeling and animation projects for films or games. \n • Scientific Visualization Specialist: Apply your skills to visualize complex scientific data for research and communication."
+        },
+        "Musical": {
+            "1-10": "• Music Appreciation Educator: Share your love for music with others by teaching the basics of music appreciation. \n • Music Blogger/Reviewer: Write about your experiences and insights on music, helping others discover new artists and genres. \n • Music Event Organizer: Organize small-scale music events, gatherings, or open mic nights in your community.",
+            "11-20": "• Music Teacher (Beginner Levels): Teach beginners to play musical instruments or provide introductory music theory lessons. \n • Session Musician: Collaborate with local musicians or bands, contributing your growing musical skills to live performances or recordings. \n • Music Therapist Assistant: Support certified music therapists in using music to help individuals with various needs, such as emotional expression or rehabilitation.",
+            "21-30": "• Professional Musician: Pursue a career as a solo artist or join a band as a musician or vocalist. \n • Music Teacher (Intermediate/Advanced Levels): Teach more advanced music techniques to students in your chosen instrument or vocal training. \n • Music Producer: Learn the ropes of music production and studio recording, working with artists to create and refine their music.",
+            "31-40": "• Composer/Arranger: Create original compositions or arrange music for orchestras, ensembles, or films. \n • Music Conductor: Lead orchestras or choirs, interpreting and directing complex musical compositions. \n • Professional Musician (Solo Artist or Orchestra Member): Pursue a solo career as a renowned musician or join prestigious orchestras."
+        },
+        "Naturalistic": {
+            "1-10": "• Nature Photographer: Develop your photography skills while immersing yourself in nature, capturing its beauty, and raising awareness about environmental issues. \n • Park Ranger Assistant: Work in a national or state park, assisting park rangers with tasks related to wildlife protection and visitor education. \n • Botanical Garden Intern: Gain hands-on experience by working in a botanical garden, learning about various plant species and their care.",
+            "11-20": "• Environmental Educator: Teach others about the importance of nature and conservation through educational programs and workshops. \n • Wildlife Technician: Assist in research projects focused on studying and preserving wildlife in their natural habitats. \n • Park Naturalist: Work in parks and nature reserves, leading guided tours and educating visitors about local ecosystems and wildlife.",
+            "21-30": "• Ecologist: Conduct research on ecosystems, species interactions, and environmental changes to contribute to conservation efforts. \n • Environmental Educator: Lead workshops, design educational materials, and inspire others to take action for the environment. \n • Park Manager: Oversee the management and conservation of natural areas, ensuring their sustainability and educational value.",
+            "31-40": "• Botanist: Study plants and their ecosystems in detail, contributing to plant conservation and biodiversity efforts. \n • Wildlife Biologist: Research and protect wildlife species, habitats, and ecosystems, often working with government agencies or conservation organizations. \n • Environmental Consultant: Offer expertise in environmental impact assessments, helping businesses and organizations make sustainable choices. \ \n • Ecological Researcher: Conduct in-depth research on complex ecological systems, making critical contributions to our understanding of the natural world."
+        },
+        "Kinesthetic": {
+            "1-10": "• Fitness Trainer/Instructor: Start a career as a fitness trainer or instructor to help others improve their physical abilities and coordination. \n • Yoga Instructor: Become a yoga instructor and guide individuals in enhancing their body awareness and flexibility. \n • Recreational Sports Coach: Coach recreational sports teams to nurture basic physical skills in participants. \n • Dance Enthusiast: Explore dance classes or clubs to develop your dance skills and share your passion with others.",
+            "11-20": "• Physical Therapist Assistant: Consider becoming a physical therapist assistant to assist in rehabilitating patients and improving their physical capabilities. \n • Martial Arts Instructor: Develop expertise in martial arts and instruct others in self-defense and discipline. \n • Circus Arts Performer: Explore circus arts like acrobatics or aerial skills as a unique way to further develop your physical abilities. \n • Parkour Instructor: If you enjoy urban movement and agility, become a parkour instructor to teach others the art of efficient movement.",
+            "21-30": "• Professional Athlete: Pursue a career in professional sports, where your strong kinesthetic intelligence can excel in a competitive environment. \n • Professional Dancer: Consider becoming a professional dancer, specializing in a specific dance style like ballet, hip-hop, or contemporary. \n • Physical Education Teacher: Use your skills to educate and inspire students as a physical education teacher in schools. \n • Choreographer: Develop intricate dance routines or movement sequences as a choreographer in the entertainment industry.",
+            "31-40": "• Olympic Athlete: With your exceptional mastery, aim for Olympic-leve \n competition in sports where your skills shine. \n • Cirque du Soleil Performer: Audition for Cirque du Soleil or similar high-level performance troupes that demand extraordinary physical prowess. \n • Physical Therapy Specialist: Become a specialist in a specific area of physical therapy, working with elite athletes or patients with complex needs. \n • Stunt Performer: Explore a career as a stunt performer in the film and television industry, executing daring physical feats."
+        },
+        "Intrapersonal": {
+            "1-10": "• Self-Help Writer: Share your journey of self-discovery and personal growth to inspire others. \n • Administrative Assistant: Use organizational skills to support others while continuing to develop your self-awareness. \n • Receptionist: Enhance your communication skills and interact with various people daily, promoting self-awareness through social interaction.",
+            "11-20": "• Human Resources Specialist: Apply your growing self-awareness to help others in their professional development and conflict resolution. \n • Life Coach: Use your improving self-understanding to guide individuals in achieving their personal and career goals. \n • Career Counselor: Assist others in discovering their strengths and interests based on your evolving self-awareness.",
+            "21-30": "• Psychologist: Utilize your strong self-awareness to provide therapy and counseling to individuals seeking personal growth and healing. \n • Leadership Coach: Help leaders enhance their effectiveness by drawing on your understanding of human behavior and motivation. \n • Motivational Speaker: Share your journey and insights to inspire and motivate others in various aspects of life.",
+            "31-40": "• Psychotherapist: Offer in-depth therapy and support to individuals dealing with complex emotional issues. \n • Creative Director: Use your exceptional self-mastery to lead and inspire creative teams in fields like advertising, design, or filmmaking. \n • Spiritual Guide: Guide individuals in their spiritual and personal development journeys, drawing on your profound self-awareness."
+        },
+        "Interpersonal": {
+            "1-10": "• Customer Service Representative: You can enhance your skills by interacting with customers and addressing their needs effectively. \n • Team Coordinator: Start by taking on roles where you facilitate group projects and help team members collaborate more efficiently. \n • Entry-Level Management: Begin building your leadership skills by overseeing small teams or projects.",
+            "11-20": "• Human Resources Specialist: Your ability to understand and relate to employees can make you an asset in HR roles. \n • Counselor or Therapist: Develop your empathy and active listening skills further to support individuals in their personal challenges. \n • Sales Representative: Building rapport is crucial in sales, and your competence in interpersonal skills can help you succeed. \n • Middle Management: Continue to grow your skills to become an effective middle manager who fosters teamwork and collaboration within a department.",
+            "21-30": "• Leadership Positions: Your strong interpersonal skills make you an ideal candidate for roles such as team leader, supervisor, or department manager. \n • Coach or Mentor: Help individuals and teams reach their full potential by offering guidance and support. \n • Counselor or Therapist: Consider specializing in areas such as marriage and family therapy, addiction counseling, or career counseling. \n • Community Organizer: Your ability to connect with people can be valuable in bringing communities together for a common cause.",
+            "31-40": "• Psychologist: Utilize your exceptional interpersonal skills to help individuals and groups address mental and emotional challenges. \n • Executive Leadership: As a top-level executive, you can lead organizations to success by fostering a positive and collaborative work environment. \n • Diplomat: Represent your country's interests and build international relationships as a diplomat. \n • Leadership Coach: Help executives and leaders improve their interpersonal and leadership skills. \n • Mentorship Programs: Establish mentorship programs within organizations or communities to empower others with your expertise."
+        }
+    }
+}
+
+export const personalityType: FeedbackData = {
+    "Personality": {
+        "Openness": {
+          "1-10": "Possible Personality Type: Conventional, Practical, Routine-Oriented",
+          "11-20": "Possible Personality Type: Balanced, Adaptable, Practical Visionary",
+          "21-30": "Possible Personality Type: Inquisitive, Versatile, Adaptive",
+          "31-40": "Possible Personality Type: Curious, Imaginative, Innovative",
+          "41-50": "Possible Personality Type: Creative, Visionary, Intellectual Explorer"
+        },
+        "Conscientiousness": {
+          "1-10": "Possible Personality Type: Unstructured, Free-Spirited, Creative",
+          "11-20": "Possible Personality Type: Flexible, Adaptable, Laid-Back Achiever",
+          "21-30": "Possible Personality Type: Balanced, Diligent, Methodical",
+          "31-40": "Possible Personality Type: Dependable, Detail-Focused, Goal-Driven",
+          "41-50": "Possible Personality Type: Methodical, Disciplined, Achievement-Oriented"
+        },
+        "Extroversion": {
+          "1-10": "Possible Personality Type: Introverted, Reflective, Thoughtful",
+          "11-20": "Possible Personality Type: Balanced, Adaptable, Reserved-Extrovert",
+          "21-30": "Possible Personality Type: Ambivert, Socially Versatile, Team Player",
+          "31-40": "Possible Personality Type: Outgoing, Sociable, Energetic",
+          "41-50": "Possible Personality Type: Extroverted, Enthusiastic, Charismatic"
+        },
+        "Agreeableness": {
+          "1-10": "Possible Personality Type: Independent, Assertive, Objective",
+          "11-20": "Possible Personality Type: Pragmatic, Diplomatic, Balanced",
+          "21-30": "Possible Personality Type: Empathetic, Flexible, Collaborative",
+          "31-40": "Possible Personality Type: Cooperative, Supportive, Amiable",
+          "41-50": "Possible Personality Type: Compassionate, Empathic, Harmonious"
+        },
+        "Neuroticism": {
+          "1-10": "Possible Personality Type: Resilient, Calm, Emotionally Stable",
+          "11-20": "Possible Personality Type: Balanced, Adaptable, Realistic",
+          "21-30": "Possible Personality Type: Stable, Flexible, Self-Aware",
+          "31-40": "Possible Personality Type: Sensitive, Reflective, Resilient Learner",
+          "41-50": "Possible Personality Type: Emotional, Empathetic, Introspective"
+        }
+    }
+}
