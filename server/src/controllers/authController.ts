@@ -7,6 +7,8 @@ import OrganizationModel from "../models/organizations";
 import * as bcrypt from 'bcryptjs';
 import { signToken } from '../utils/token';
 import { validationResult } from 'express-validator';
+import crypto from 'crypto';
+import nodemailer from 'nodemailer';
 
 const saltRounds = 10;
 
@@ -23,9 +25,9 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
     const { username, email, age, password, organization_code } = req.body;
 
     //check whether org_code exists
-    let org = await OrganizationModel.findOne({ org_code: organization_code});
+    let org = await OrganizationModel.findOne({ org_code: organization_code });
     if (!org) {
-      return res.status(404).json({success: false, error: "org_code not found"});
+      return res.status(404).json({ success: false, error: "org_code not found" });
     }
 
     // check whether the user with this email exists already
@@ -108,3 +110,84 @@ export async function login(req: Request, res: Response): Promise<any> {
     return;
   }
 };
+
+export async function forgotPassword(req: Request, res: Response): Promise<any> {
+  try {
+    const email = req.body.email;
+
+    const token = crypto.randomBytes(20).toString('hex');
+
+    const expiration = new Date();
+    expiration.setHours(expiration.getHours() + 1);
+
+    const resetLink = `https://yourwebsite.com/reset-password?token=${token}`;
+
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'hissingsaint@gmail.com',
+        pass: 'dhxd kbsf lcah peij',
+      },
+    });
+
+    // Define email data
+    const mailOptions = {
+      from: 'hissingsaint@gmail.com',
+      to: email,
+      subject: 'Password Reset',
+      text: `Click the following link to reset your password: ${resetLink}`,
+    };
+
+    // Send the email
+    await transporter.sendMail(mailOptions);
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ success: false, error: 'error sending email' });
+      } else {
+        console.log('Email sent:', info.response);
+        res.status(200).json({ success: true });
+      }
+    });
+
+    await User.findOneAndUpdate({ email }, { resetToken: token, resetTokenExpiry: expiration });
+
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error });
+  }
+}
+
+export async function resetPassword(req: Request, res: Response): Promise<any> {
+  try {
+    const { token, newPassword } = req.body;
+
+    // Step 1: Verify if the token is valid and not expired
+    const user = await User.findOne({
+      username: req.body.username,
+      email: req.body.email,
+      resetToken: token,
+      resetTokenExpiry: { $gt: new Date() }, // Check if the token is not expired
+    });
+
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid or expired token.' });
+    }
+
+    // Step 2: Hash the new password
+    const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+
+    // Step 3: Update the user's password and clear the reset token
+    user.password = hashedPassword;
+    user.resetToken = undefined;
+    user.resetTokenExpiry = undefined;
+
+    // Save the updated user document
+    await user.save();
+
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error });
+  }
+}

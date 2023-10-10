@@ -3,7 +3,9 @@ import nodemailer from 'nodemailer';
 import User from '../models/users'; // Assuming you have a User model
 // import { UpdateWriteOpResult } from 'mongoose';
 import fs from 'fs';
+import path from 'path';
 import { sendFeedback, sendUserInfo, sendCharts, sendScores } from './pdfController';
+import fetchUser from '../middlewares/fetchUser';
 // import { signToken } from '../utils/token';
 // import { validationResult } from 'express-validator';
 
@@ -188,13 +190,35 @@ export async function sendTestEmail(req: Request, res: Response): Promise<void> 
 
 export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
   try {
-    await sendUserInfo(req,res);
 
-    await sendCharts(req,res);
+    const username = req.user.username;
+    const email = req.user.email;
 
-    await sendScores(req,res);
-    
-    await sendFeedback(req,res);
+    // Extract the first 5 letters from 'username' and 'email'
+    const usernameFirst5 = username.slice(0, 5);
+    const emailFirst5 = email.slice(0, 5);
+
+    // Create the custom folder inside the "runningPdfs" folder
+    const customFolderPath = path.join(__dirname, '..', 'runningPdfs', `${usernameFirst5}${emailFirst5}`);
+    if (!fs.existsSync(customFolderPath)) {
+      fs.mkdirSync(customFolderPath, { recursive: true });
+    }
+
+    // Copy the PDF file to the custom folder
+    const sourceFolderPath = path.join(__dirname, '..', 'tp'); // Go up one level to access 'tp'
+    const sourcePdfPath = path.join(sourceFolderPath, 'yay.pdf');
+
+    const pdfFileName = 'feedback.pdf'; // Change this to your PDF file name
+    const destinationPdfPath = path.join(customFolderPath, pdfFileName);
+    fs.copyFileSync(sourcePdfPath, destinationPdfPath);
+
+    await sendUserInfo(req, res);
+
+    await sendCharts(req, res);
+
+    await sendScores(req, res);
+
+    await sendFeedback(req, res);
 
     res.status(200).json({ success: true });
   } catch (error) {
@@ -216,10 +240,10 @@ export async function carreerOptions(req: Request, res: Response): Promise<void>
 
     if (result) {
       // The update happened and a document was modified.
-      res.status(200).json({success: true});
+      res.status(200).json({ success: true });
       return;
     } else {
-      res.status(404).json({success: false, error: 'Document not found and not updated'});
+      res.status(404).json({ success: false, error: 'Document not found and not updated' });
       return;
     }
 

@@ -38,6 +38,12 @@ const UserSchema = new Schema({
         type: Array,
     },
     testResults: [testResultSchema], //array of test results
+    resetToken: {
+        type: String,
+    },
+    resetTokenExpiry: {
+        type: Date,
+    }
 });
 
 const UserModel = mongoose.model("User", UserSchema);

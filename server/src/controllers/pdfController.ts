@@ -9,9 +9,25 @@ import { getCarreerSug, getFeedback, getPersonalityType } from '../utils/feedbac
 import fs from 'fs';
 import OrganizationModel from '../models/organizations';
 
+async function customFolderName(req: Request, res: Response): Promise<string> {
+    const username = req.user.username
+    const email = req.user.email
+
+    // Extract the first 5 letters from 'username' and 'email'
+    const usernameFirst5 = username.slice(0, 5);
+    const emailFirst5 = email.slice(0, 5);
+
+    // Combine the first 5 letters of 'username' and 'email' to create a custom folder name
+    const customFolderName = `${usernameFirst5}${emailFirst5}`;
+    const filePath = `src/runningPdfs/${customFolderName}/feedback.pdf`;
+
+    return filePath;
+}
+
 export async function makeBarChartPdf(req: Request, res: Response, testType: string, pageNumber: number): Promise<void> {
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -136,7 +152,7 @@ export async function makeBarChartPdf(req: Request, res: Response, testType: str
 
     // // Save the modified PDF to a new file
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 export async function userInfoPdf1(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
@@ -149,8 +165,8 @@ export async function userInfoPdf1(req: Request, res: Response, pageNumber: numb
     let linesInfo = [];
     const name = user?.username;
 
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -176,7 +192,7 @@ export async function userInfoPdf1(req: Request, res: Response, pageNumber: numb
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 export async function userInfoPdf2(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
@@ -189,8 +205,8 @@ export async function userInfoPdf2(req: Request, res: Response, pageNumber: numb
     let linesInfo = [];
     const email = user?.email;
 
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -216,7 +232,7 @@ export async function userInfoPdf2(req: Request, res: Response, pageNumber: numb
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 export async function userInfoPdf3(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
@@ -229,8 +245,8 @@ export async function userInfoPdf3(req: Request, res: Response, pageNumber: numb
     let linesInfo = [];
     const age = user?.age.toString();
 
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -256,7 +272,7 @@ export async function userInfoPdf3(req: Request, res: Response, pageNumber: numb
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 export async function userInfoPdf4(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
@@ -267,8 +283,8 @@ export async function userInfoPdf4(req: Request, res: Response, pageNumber: numb
 
     const org_name = org?.org_name;
 
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -294,7 +310,7 @@ export async function userInfoPdf4(req: Request, res: Response, pageNumber: numb
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 export async function makeFeedbackPdf(req: Request, res: Response, testType: string, subCategory: string, pageNumber: number, Fontsize: number, maxWords: number, Xd: number, Yd: number): Promise<void> {
@@ -311,8 +327,8 @@ export async function makeFeedbackPdf(req: Request, res: Response, testType: str
     const score = subCategori?.score;
 
 
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -377,7 +393,7 @@ export async function makeFeedbackPdf(req: Request, res: Response, testType: str
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 export async function personalityTypePdf(req: Request, res: Response, testType: string, subCategory: string, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
@@ -393,8 +409,8 @@ export async function personalityTypePdf(req: Request, res: Response, testType: 
     const subCategori = testResult?.subcategories.find(sub => sub.name === subCategory);
     const score = subCategori?.score;
 
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -423,7 +439,7 @@ export async function personalityTypePdf(req: Request, res: Response, testType: 
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 export async function makeScorePercentPdf(req: Request, res: Response, testType: string, subCategory: string, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
@@ -439,8 +455,8 @@ export async function makeScorePercentPdf(req: Request, res: Response, testType:
     const subCategori = testResult?.subcategories.find(sub => sub.name === subCategory);
     const score = subCategori?.score;
 
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -471,7 +487,7 @@ export async function makeScorePercentPdf(req: Request, res: Response, testType:
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 // interface subs {
@@ -549,8 +565,8 @@ export async function BrainFeedback(req: Request, res: Response, testType: strin
     const subCategori = testResult?.subcategories.find(sub => sub.name === subCategory);
     const score = subCategori?.score;
 
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -624,7 +640,7 @@ export async function BrainFeedback(req: Request, res: Response, testType: strin
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 export async function carreerOptionsPdf(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
@@ -639,7 +655,8 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
 
     const carreerOptions = existingUser?.carreerOptions;
 
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -669,7 +686,7 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 export async function carreerSugPdf(req: Request, res: Response, testType: string, subCategory: string, pageNumber: number, Fontsize: number, maxWords: number, Xd: number, Yd: number): Promise<void> {
@@ -685,8 +702,8 @@ export async function carreerSugPdf(req: Request, res: Response, testType: strin
     const subCategori = testResult?.subcategories.find(sub => sub.name === subCategory);
     const score = subCategori?.score;
 
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -760,12 +777,13 @@ export async function carreerSugPdf(req: Request, res: Response, testType: strin
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
 export async function makeRadarChartPdf(req: Request, res: Response, testType: string, pageNumber: number): Promise<void> {
-    // Load the existing PDF
-    const pdfBuffer = await fs.promises.readFile('src/yay.pdf');
+    
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
 
     // Get a specific page (e.g., page 1)
@@ -850,7 +868,7 @@ export async function makeRadarChartPdf(req: Request, res: Response, testType: s
 
     // Save the modified PDF to a new file
     const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile('src/yay.pdf', modifiedPdfBytes);
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
 
     // fs.writeFileSync('chart.png', base64WithoutMimeType, 'base64');
 }

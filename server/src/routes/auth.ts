@@ -1,6 +1,6 @@
 import express, { Router, Request, Response, NextFunction } from 'express';
 import { body, validationResult } from 'express-validator';
-import { login, createUser } from '../controllers/authController';
+import { login, createUser, forgotPassword, resetPassword } from '../controllers/authController';
 
 const router: Router = express.Router();
 
@@ -14,7 +14,7 @@ const validate = (req: Request, res: Response, next: NextFunction) => {
 };
 
 router.post('/createuser', [
-  body('username', 'Username cannot be blank').exists(),
+  body('username', 'Username should contain at least 5 characters').isLength({ min: 5 }),
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password should contain at least 5 characters').isLength({ min: 5 }),
   body('age', 'Age should be a number').isInt(),
@@ -26,5 +26,13 @@ router.post('/login', [
     body('username', "Username cannot be blank").exists(),
     body('password', "Password cannot be blank").exists(),
 ], validate, login);
+
+router.post('/forgotpassword', [
+  body('email', "Enter a valid email").isEmail(),
+], validate, forgotPassword);
+
+router.post('/resetpassword', [
+  body('password', 'Password should contain at least 5 characters').isLength({ min: 5 }),
+], validate, resetPassword);
 
 export default router;
