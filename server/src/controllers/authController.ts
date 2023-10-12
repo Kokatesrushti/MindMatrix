@@ -10,6 +10,44 @@ import { validationResult } from 'express-validator';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 
+async function sendEmail(
+  to: string,
+  subject?: string,
+  text?: string,
+  attachments?: { filename: string; path: string }[]
+): Promise<void> {
+  // Create a transporter
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: 'hissingsaint@gmail.com',
+      pass: 'hbxm hjuk yuxj gqwd',
+    },
+  });
+
+  // Define email data
+  const mailOptions: nodemailer.SendMailOptions = {
+    from: 'hissingsaint@gmail.com',
+    to,
+    subject: subject || 'Default Subject',
+    text: text || 'Default Email Text',
+    attachments: attachments || [],
+  };
+
+  // Send the email
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully');
+  } catch (error) {
+    console.error('Error sending email:', error);
+  }
+}
+
+// Example usages
+// sendEmail('recipient@example.com');
+// sendEmail('recipient@example.com', 'Your Subject');
+// sendEmail('recipient@example.com', 'Your Subject', 'Hello, this is the email content.');
+
 const saltRounds = 10;
 
 export const createUser = async (req: Request, res: Response): Promise<any> => {
@@ -25,13 +63,13 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
     const { username, email, age, password, organization_code } = req.body;
 
     //check whether org_code exists
-    let org = await OrganizationModel.findOne({ org_code: organization_code });
+    const org = await OrganizationModel.findOne({ org_code: organization_code });
     if (!org) {
       return res.status(404).json({ success: false, error: "org_code not found" });
     }
 
     // check whether the user with this email exists already
-    let user = await User.findOne({ username: username, email: email });
+    const user = await User.findOne({ email: email });
     if (user) {
       return res.status(400).json({ success, error: "User already exists" });
     }
@@ -41,7 +79,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
     const secPass = await bcrypt.hash(password, salt);
 
     // Creating a new user
-    user = await User.create({
+    const userCreated = await User.create({
       username: username,
       email: email,
       age: age,
@@ -49,8 +87,19 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
       org_code: organization_code,
     });
 
+    if (userCreated) {
+      const subject = "Welcome to the Psychometric Test Journey";
+      const text = "Dear Aspirant,\n\nWe're happy to welcome you on board as a registered member of our psychometric test program. Our psychometric test is designed to help you unlock your full potential, understand your strengths, and identify areas for development.\n\nPlease take a moment to explore the attached document and familiarize yourself with the test instructions.\n\nIf you have any questions or need assistance, please don't hesitate to reach out to us.\n\nThank you for choosing us as your partner in self-discovery.\n\nWarm regards,\n\nDr. Antony Augusthy";
+      const attachments = [{
+        filename: 'Psychometric Test Instructions.pdf',
+        path: `src/tp/Psychometric Test Instructions.pdf`,
+      }];
+
+      sendEmail(userCreated.email, subject, text, attachments);
+    }
+
     // Token authentication using JWT
-    const authtoken = signToken(user.username, user.email, user.org_code);
+    const authtoken = signToken(userCreated.username, userCreated.email, userCreated.org_code);
 
     // Response
     success = true;
@@ -122,34 +171,10 @@ export async function forgotPassword(req: Request, res: Response): Promise<any> 
 
     const resetLink = `https://yourwebsite.com/reset-password?token=${token}`;
 
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-        user: 'hissingsaint@gmail.com',
-        pass: 'dhxd kbsf lcah peij',
-      },
-    });
+    const subject = 'Password Reset';
+    const text = `This link is active only for an hour.\nClick the following link to reset your password: ${resetLink}`;
 
-    // Define email data
-    const mailOptions = {
-      from: 'hissingsaint@gmail.com',
-      to: email,
-      subject: 'Password Reset',
-      text: `Click the following link to reset your password: ${resetLink}`,
-    };
-
-    // Send the email
-    await transporter.sendMail(mailOptions);
-
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Error sending email:', error);
-        res.status(500).json({ success: false, error: 'error sending email' });
-      } else {
-        console.log('Email sent:', info.response);
-        res.status(200).json({ success: true });
-      }
-    });
+    sendEmail(email, subject, text);
 
     await User.findOneAndUpdate({ email }, { resetToken: token, resetTokenExpiry: expiration });
 

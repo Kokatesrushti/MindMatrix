@@ -6,6 +6,8 @@ import { createCanvas } from 'canvas';
 import { PDFDocument, PDFImage, rgb, StandardFonts } from 'pdf-lib';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { getCarreerSug, getFeedback, getPersonalityType } from '../utils/feedbackFunction';
+import puppeteer from 'puppeteer';
+import { JSDOM } from 'jsdom';
 import fs from 'fs';
 import OrganizationModel from '../models/organizations';
 
@@ -25,7 +27,7 @@ async function customFolderName(req: Request, res: Response): Promise<string> {
 }
 
 export async function makeBarChartPdf(req: Request, res: Response, testType: string, pageNumber: number): Promise<void> {
-    
+
     const filePath: string = await customFolderName(req, res);
     const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
@@ -780,8 +782,116 @@ export async function carreerSugPdf(req: Request, res: Response, testType: strin
     await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
+async function puppetChart(pageNumber: number, Xd: number, Yd: number): Promise<void> {
+    const browser = await puppeteer.launch({
+        headless: 'new',
+    });
+    const page = await browser.newPage();
+
+    // Create a new JSDOM instance
+    const dom = new JSDOM();
+    const window = dom.window;
+    const document = window.document;
+
+    const chartContainer = document.createElement('div');
+    document.body.appendChild(chartContainer);
+
+    console.log('hmmm');
+    // const d3 = await import('d3');
+    const d3 = require('d3');
+    console.log('hmmm');
+    const svg = d3.select(chartContainer) // Use d3.default
+        .append('svg')
+        .attr('width', 400)
+        .attr('height', 300);
+
+    // Add your D3.js chart logic here (replace with your chart code)
+    // Example: Create a simple rectangle
+    svg.append('rect')
+        .attr('x', 10)
+        .attr('y', 10)
+        .attr('width', 100)
+        .attr('height', 50)
+        .style('fill', 'blue');
+
+    const chartImage = await page.screenshot();
+
+    //   const pdfTemplate = 'template.pdf';
+    await page.goto(`file:///home/gracious746/MindMatrix/server/src/tp/blank.pdf`);
+
+    const pageDimensions = await page.evaluate(() => {
+        const pageRect = document.querySelector('body')?.getBoundingClientRect();
+        return {
+            width: pageRect?.width,
+            height: pageRect?.height,
+        };
+    });
+
+    await page.setContent(`
+    <html>
+      <body>
+        <img src="data:image/png;base64,${chartImage.toString('base64')}" style="position: absolute; left: ${Xd}px; top: ${Yd}px;">
+      </body>
+    </html>
+  `);
+
+    const pdfPath = `src/output_page_${pageNumber}.pdf`;
+
+    const pages = await page.$$('body > *');
+    if (pages.length > pageNumber) {
+        // Extract the content of the specified page and create a PDF with it
+        const pageContent = pages[pageNumber];
+        await page.evaluateHandle((content) => {
+            content.remove();
+        }, pageContent);
+
+        await page.pdf({
+            path: pdfPath,
+            format: 'A4',
+            printBackground: true,
+        });
+
+        console.log(`PDF page ${pageNumber} created at ${pdfPath}`);
+    } else {
+        console.error(`Page ${pageNumber} does not exist in the PDF.`);
+    }
+
+    await browser.close();
+}
+
+// async function googleChart(pageNumber: number, Xd: number, Yd: number): Promise<void> {
+//     const chart = new GoogleChartsNode(600, 400);
+
+//     const data = [['Category', 'Value'], ['Category 1', 10], ['Category 2', 20], ['Category 3', 30]];
+//     const options = { title: 'Bar Chart Example' };
+
+//     chart.draw('BarChart', data, options);
+//     const imageBuffer = await chart.getImageBuffer('image/png');
+
+//     const pdfBuffer = await fs.promises.readFile(`src/tp/blank.pdf`);
+//     const pdfDoc = await PDFDocument.load(pdfBuffer);
+
+//     // Get a specific page (e.g., page 1)
+//     const page = pdfDoc.getPages()[pageNumber - 1]; // Page numbering is 0-based
+
+//     // Load the chart image into the PDF
+//     const image = await pdfDoc.embedPng(imageBuffer);
+
+//     const { width, height } = image.scale(1);
+//     page.drawImage(image, {
+//         x: Xd, // X-coordinate
+//         y: Yd, // Y-coordinate
+//         width: width,
+//         height: height,
+//     });
+
+//     const pdfBytes = await pdfDoc.save();
+
+//     await fs.promises.writeFile('chartssss.pdf', pdfBytes);
+// }
+
 export async function makeRadarChartPdf(req: Request, res: Response, testType: string, pageNumber: number): Promise<void> {
-    
+
     const filePath: string = await customFolderName(req, res);
     const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
@@ -1016,7 +1126,7 @@ export async function sendUserInfo(req: Request, res: Response): Promise<void> {
         await userInfoPdf3(req, res, 2, 18, 300, 545);
         await userInfoPdf2(req, res, 2, 18, 300, 340);
         await userInfoPdf4(req, res, 2, 18, 300, 290);
-        
+
     } catch (error) {
         console.log(error);
         res.status(500);
@@ -1026,17 +1136,16 @@ export async function sendUserInfo(req: Request, res: Response): Promise<void> {
 export async function sendCharts(req: Request, res: Response): Promise<void> {
     try {
         //Charts
-        await makeBarChartPdf(req, res, "Study Skills Set Profile", 20);
-        await makeBarChartPdf(req, res, "Aptitude", 6);
-        await makeBarChartPdf(req, res, "Multiple Intelligence", 10);
-        await makeBarChartPdf(req, res, "Emotional Intelligence", 32);
-        await makeBarChartPdf(req, res, "Personality", 28);
-        await makeBarChartPdf(req, res, "Learning Style", 35);
-        await makeBarChartPdf(req, res, "Leadership Style", 38);
-        await makeBarChartPdf(req, res, "Competitive State Anxiety Inventory", 42);
-        await makeBarChartPdf(req, res, "Left-Right Brain Dominance", 26);
-        await makeRadarChartPdf(req, res, "Students Wheel of Life", 24);
-
+        // await makeBarChartPdf(req, res, "Study Skills Set Profile", 20);
+        // await makeBarChartPdf(req, res, "Aptitude", 6);
+        // await makeBarChartPdf(req, res, "Multiple Intelligence", 10);
+        // await makeBarChartPdf(req, res, "Emotional Intelligence", 32);
+        // await makeBarChartPdf(req, res, "Personality", 28);
+        // await makeBarChartPdf(req, res, "Learning Style", 35);
+        // await makeBarChartPdf(req, res, "Leadership Style", 38);
+        // await makeBarChartPdf(req, res, "Competitive State Anxiety Inventory", 42);
+        // await makeBarChartPdf(req, res, "Left-Right Brain Dominance", 26);
+        // await makeRadarChartPdf(req, res, "Students Wheel of Life", 24);
     } catch (error) {
         console.log(error);
         res.status(500);

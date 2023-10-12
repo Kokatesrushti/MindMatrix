@@ -4,6 +4,46 @@ import nodemailer from 'nodemailer';
 import User from '../models/users';
 import { signToken } from '../utils/token';
 import { validationResult } from 'express-validator';
+import fs from 'fs';
+import path from 'path';
+
+async function sendEmail(
+  to: string,
+  subject?: string,
+  text?: string,
+  attachments?: { filename: string; path: string }[]
+): Promise<void> {
+  // Create a transporter
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: 'hissingsaint@gmail.com',
+      pass: 'hbxm hjuk yuxj gqwd',
+    },
+  });
+
+  // Define email data
+  const mailOptions: nodemailer.SendMailOptions = {
+    from: 'hissingsaint@gmail.com',
+    to,
+    subject: subject || 'Default Subject',
+    text: text || 'Default Email Text',
+    attachments: attachments || [],
+  };
+
+  // Send the email
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully');
+  } catch (error) {
+    console.error('Error sending email:', error);
+  }
+}
+
+// Example usages
+// sendEmail('recipient@example.com');
+// sendEmail('recipient@example.com', 'Your Subject');
+// sendEmail('recipient@example.com', 'Your Subject', 'Hello, this is the email content.');
 
 export async function createOrganization(req: Request, res: Response): Promise<any> {
   let success = false;
@@ -18,9 +58,9 @@ export async function createOrganization(req: Request, res: Response): Promise<a
     const { orgi_name, orgi_email } = req.body;
 
     //check if organization exists
-    let org = await Organization.findOne({ org_name: orgi_name, org_email: orgi_email});
-    if(org) {
-      return res.status(404).json({success, error: "organization already exists"});
+    let org = await Organization.findOne({ org_name: orgi_name, org_email: orgi_email });
+    if (org) {
+      return res.status(404).json({ success, error: "organization already exists" });
     }
 
     const charset = '0123456789';
@@ -82,6 +122,36 @@ export async function getUsersOrg(req: Request, res: Response): Promise<any> {
   } catch (error) {
     console.error('Error finding users:', error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+export async function getTotalPdfs(req: Request, res: Response): Promise<any> {
+  try {
+    const runningPdfsFolderPath = path.join(__dirname, '..', 'runningPdfs');
+
+    const uniqueFolders = new Set();
+    let counts = 0;
+
+    fs.readdir(runningPdfsFolderPath, (err, files) => {
+      if (err) {
+        console.error('Error reading directory:', err);
+        return;
+      }
+
+      // Iterate through the files in the directory
+      files.forEach((file) => {
+        const filePath = path.join(runningPdfsFolderPath, file);
+
+        // Check if the file is a directory
+        if (fs.statSync(filePath).isDirectory()) {
+          uniqueFolders.add(file);
+        }
+      });
+
+      res.status(200).json({ success: true, numberOfUniqueFolders: uniqueFolders.size });
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error });
   }
 }
 
@@ -148,31 +218,16 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
       return;
     }
 
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail', // Use the email service you prefer
-      auth: {
-        user: 'hissingsaint@gmail.com',
-        pass: 'dhxd kbsf lcah peij',
-      },
-    });
+    const email = org.org_email;
+    const subject = "Psychometric Test Organizational Code";
+    const text = "Dear Sir/Ma’am,\n\nWe are delighted to announce that we are fully prepared to commence the implementation of the Psychometric Test Suite program at your prestigious institution.\n\nAs part of this process, we are sharing with you a unique organizational code: 12345.\nThe candidates must input this code in order to gain access to the test.\n\nPlease note that this code is strictly meant for those who have successfully completed their test registration. It is of utmost importance that this code remains confidential and not to be shared with anyone else.\n\nIf you have any queries, please feel free to reach out to us.\n\nWarm regards,\n\nDr. Antony Augusthy";
+    const attachments = [{
+      filename: 'Psychometric Test Instructions.pdf',
+      path: `src/tp/Psychometric Test Instructions.pdf`,
+    }];
 
-    // Define the email content
-    const mailOptions: nodemailer.SendMailOptions = {
-      from: 'hissingsaint@gmail.com',
-      to: req.user.email, // The recipient's email address
-      subject: 'Data from psycometric tests',
-      text: 'Here is your code for the tests: ' + JSON.stringify(org.org_code)
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Error sending email:', error);
-        res.status(500).json({ success: false, error: 'error sending email' });
-      } else {
-        console.log('Email sent:', info.response);
-        res.status(200).json({ success: true });
-      }
-    });
+    sendEmail(email, subject, text, attachments);
+    
   } catch (error) {
     res.status(500).json({ success: false, error: error });
   }
