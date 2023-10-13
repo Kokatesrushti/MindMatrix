@@ -56,7 +56,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
   // If there are validation errors return bad request and the errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ success, errors: errors.array() });
   }
 
   try {
@@ -65,13 +65,13 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
     //check whether org_code exists
     const org = await OrganizationModel.findOne({ org_code: organization_code });
     if (!org) {
-      return res.status(404).json({ success: false, error: "org_code not found" });
+      return res.status(404).json({ success, error: "Organization code does not exist" });
     }
 
     // check whether the user with this email exists already
     const user = await User.findOne({ email: email });
     if (user) {
-      return res.status(400).json({ success, error: "User already exists" });
+      return res.status(400).json({ success, error: "Email already exists" });
     }
 
     // Salting password
@@ -116,7 +116,7 @@ export async function login(req: Request, res: Response): Promise<any> {
   // If there are validation errors, return bad request and the errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.status(400).json({ errors: errors.array() });
+    res.status(400).json({ success, errors: errors.array() });
     return;
   }
 
@@ -137,7 +137,7 @@ export async function login(req: Request, res: Response): Promise<any> {
       username: username,
     });
     if (!user) {
-      return res.status(400).json({ success, error: 'Please try to login with correct credentials' });
+      return res.status(400).json({ success, error: 'Please try to login with correct username' });
     }
 
     // Matching user password
@@ -163,6 +163,11 @@ export async function login(req: Request, res: Response): Promise<any> {
 export async function forgotPassword(req: Request, res: Response): Promise<any> {
   try {
     const email = req.body.email;
+
+    const ems = await User.findOne({ email: email });
+    if (!ems) {
+      return res.status(404).json({ success: false, error: "No user with this email was found" });
+    }
 
     const token = crypto.randomBytes(20).toString('hex');
 
@@ -197,7 +202,7 @@ export async function resetPassword(req: Request, res: Response): Promise<any> {
     });
 
     if (!user) {
-      return res.status(400).json({ message: 'Invalid or expired token.' });
+      return res.status(400).json({ success: false, error: "The link has expired, please try again" });
     }
 
     // Step 2: Hash the new password

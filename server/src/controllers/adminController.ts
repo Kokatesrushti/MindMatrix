@@ -166,7 +166,48 @@ export async function getUserInfo(req: Request, res: Response): Promise<any> {
 
     res.status(200).json({ success: true, user });
   } catch (error) {
-    console.error('Error finding the user:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+export async function downloadPdf(req: Request, res: Response): Promise<any> {
+  try {
+    const { username, email } = req.body;
+
+    const existinguser = await User.find({
+      username: username,
+      email: email
+    })
+
+    if (existinguser) {
+      // Extract the first 5 letters from 'username' and 'email'
+      const usernameFirst5 = username.slice(0, 5);
+      const emailFirst5 = email.slice(0, 5);
+
+      // Combine the first 5 letters of 'username' and 'email' to create a custom folder name
+      const customFolderName = `${usernameFirst5}${emailFirst5}`;
+      const filePath = `src/runningPdfs/${customFolderName}/feedback.pdf`;
+
+      // Check if the file exists
+      if (!fs.existsSync(filePath)) {
+        return res.status(404).send('File not found/created');
+      }
+
+      // Set the response headers to prompt a download
+      res.setHeader('Content-disposition', `attachment; filename=feedback.pdf`);
+      res.setHeader('Content-type', 'application/pdf');
+
+      // Send the file as a download
+      res.status(200).download(filePath, `feedback.pdf`, (err) => {
+        if (err) {
+          console.error('Error downloading file:', err);
+          return res.status(500).send('Internal Server Error');
+        }
+      });
+    } else {
+      res.status(404).json({ success: false, message: 'User not found' });
+    }
+  } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }
 }
@@ -227,8 +268,9 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
     }];
 
     sendEmail(email, subject, text, attachments);
-    
+
   } catch (error) {
     res.status(500).json({ success: false, error: error });
   }
 };
+

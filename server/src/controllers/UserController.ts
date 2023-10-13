@@ -341,6 +341,8 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
       fs.mkdirSync(customFolderPath, { recursive: true });
     }
 
+    
+
     // Copy the PDF file to the custom folder
     const sourceFolderPath = path.join(__dirname, '..', 'tp'); // Go up one level to access 'tp'
     const sourcePdfPath = path.join(sourceFolderPath, 'yay.pdf');
