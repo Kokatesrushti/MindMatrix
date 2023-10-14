@@ -26,8 +26,6 @@ router.post('/testResultToAPI', fetchUser, getTestResults); // One single route 
 //   "score": "25"
 // } for req.body
 
-router.get('/sendpdftoemail', fetchUser, sendPdfToEmail);
-
 router.get('/makepdf', fetchUser, makeFinalPdf);
 
 export default router;

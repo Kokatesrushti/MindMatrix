@@ -20,14 +20,14 @@ async function sendEmail(
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: 'hissingsaint@gmail.com',
-      pass: 'hbxm hjuk yuxj gqwd',
+      user: process.env.ADMIN_GMAIL,
+      pass: process.env.ADMIN_GMAIL_PASSWORD,
     },
   });
 
   // Define email data
   const mailOptions: nodemailer.SendMailOptions = {
-    from: 'hissingsaint@gmail.com',
+    from: process.env.ADMIN_GMAIL,
     to,
     subject: subject || 'Default Subject',
     text: text || 'Default Email Text',
@@ -37,7 +37,7 @@ async function sendEmail(
   // Send the email
   try {
     await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully');
+    // console.log('Email sent successfully');
   } catch (error) {
     console.error('Error sending email:', error);
   }

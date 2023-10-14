@@ -17,14 +17,14 @@ async function sendEmail(
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: 'hissingsaint@gmail.com',
-      pass: 'hbxm hjuk yuxj gqwd',
+      user: process.env.ADMIN_GMAIL,
+      pass: process.env.ADMIN_GMAIL_PASSWORD,
     },
   });
 
   // Define email data
   const mailOptions: nodemailer.SendMailOptions = {
-    from: 'hissingsaint@gmail.com',
+    from: process.env.ADMIN_GMAIL,
     to,
     subject: subject || 'Default Subject',
     text: text || 'Default Email Text',
@@ -34,7 +34,7 @@ async function sendEmail(
   // Send the email
   try {
     await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully');
+    // console.log('Email sent successfully');
   } catch (error) {
     console.error('Error sending email:', error);
   }
@@ -258,10 +258,11 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
       res.status(404).json({ message: 'organization not found' });
       return;
     }
+    const disCode = org.org_code;
 
     const email = org.org_email;
     const subject = "Psychometric Test Organizational Code";
-    const text = "Dear Sir/Ma’am,\n\nWe are delighted to announce that we are fully prepared to commence the implementation of the Psychometric Test Suite program at your prestigious institution.\n\nAs part of this process, we are sharing with you a unique organizational code: 12345.\nThe candidates must input this code in order to gain access to the test.\n\nPlease note that this code is strictly meant for those who have successfully completed their test registration. It is of utmost importance that this code remains confidential and not to be shared with anyone else.\n\nIf you have any queries, please feel free to reach out to us.\n\nWarm regards,\n\nDr. Antony Augusthy";
+    const text = `Dear Sir/Ma’am,\n\nWe are delighted to announce that we are fully prepared to commence the implementation of the Psychometric Test Suite program at your prestigious institution.\n\nAs part of this process, we are sharing with you a unique organizational code: ${disCode}.\nThe candidates must input this code in order to gain access to the test.\n\nPlease note that this code is strictly meant for those who have successfully completed their test registration. It is of utmost importance that this code remains confidential and not to be shared with anyone else.\n\nIf you have any queries, please feel free to reach out to us.\n\nWarm regards,\n\nDr. Antony Augusthy`;
     const attachments = [{
       filename: 'Psychometric Test Instructions.pdf',
       path: `src/tp/Psychometric Test Instructions.pdf`,

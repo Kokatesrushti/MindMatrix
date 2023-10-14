@@ -101,7 +101,7 @@ export const feedbackData: FeedbackData = {
             "17-20": "Congratulations on achieving an exceptional score in logical reasoning! Your mastery of logical thinking is impressive and reflects your dedication to excellence."
         }
     },
-    "Study Skills Set Profile": {
+    "Study Skills Profile Assessment": {
         "Time Management and Procrastination": {
             "1-8": "Your current time management and procrastination strategies may benefit from significant improvement. Consider exploring effective techniques and resources to enhance your productivity and overcome procrastination tendencies.",
             "9-16": "You are making progress in your journey to conquer procrastination and manage your time effectively. Keep refining your skills and adopting valuable strategies to elevate your productivity and focus further.",

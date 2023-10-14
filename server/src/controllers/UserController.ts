@@ -20,14 +20,14 @@ async function sendEmail(
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: 'hissingsaint@gmail.com',
-      pass: 'hbxm hjuk yuxj gqwd',
+      user: process.env.ADMIN_GMAIL,
+      pass: process.env.ADMIN_GMAIL_PASSWORD,
     },
   });
 
   // Define email data
   const mailOptions: nodemailer.SendMailOptions = {
-    from: 'hissingsaint@gmail.com',
+    from: process.env.ADMIN_GMAIL,
     to,
     subject: subject || 'Default Subject',
     text: text || 'Default Email Text',
@@ -37,7 +37,7 @@ async function sendEmail(
   // Send the email
   try {
     await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully');
+    // console.log('Email sent successfully');
   } catch (error) {
     console.error('Error sending email:', error);
   }
@@ -203,7 +203,7 @@ export async function totalTests(req: Request, res: Response): Promise<void> {
 
     const general: Record<string, number> = {
       "Multiple Intelligence": 8,
-      "Study Skills Set Profile": 8,
+      "Study Skills Profile Assessment": 8,
       "Aptitude": 6,
       "Emotional Intelligence": 5,
       "Learning Style": 3,
@@ -245,7 +245,7 @@ export async function totalTests(req: Request, res: Response): Promise<void> {
 
       res.status(200).json({ success: true, differenceList: differenceList });
     } else {
-      res.status(404).json({ success: false, error: "Not Found"});
+      res.status(404).json({ success: false, error: "Not Found" });
     }
   } catch (error) {
     console.error('Error updating document:', error);
@@ -310,16 +310,16 @@ export async function sendPdfToEmail(req: Request, res: Response): Promise<void>
     const customFolderName = `${usernameFirst5}${emailFirst5}`;
     const filePath = `src/runningPdfs/${customFolderName}/feedback.pdf`;
 
-    const subject = "Congrats, this is your feedback";
-    const text = "check attachments";
+    const subject = "Psychometric Test Report";
+    const text = `Dear ${username}!\n\nSharing with you the psychometric test report.  Attached is a comprehensive report that explores multiple facets of your personality, offers career recommendations, identifies your strengths, and points out areas for potential growth.\n\nWe highly encourage you to set aside some dedicated time for a thorough review of the report, allowing yourself the opportunity to reflect deeply on the valuable insights it offers. This information can be a valuable tool on your journey of self-discovery and personal development.\n\nIf you have any queries or require any assistance in understanding your results or setting goals based on them, please do not hesitate to reach out to us. Our team is here to support you in making the most of this valuable resource.\n\nThank you for choosing us as your trusted partner in self-discovery. We look forward to accompanying you on your path to personal growth and self-awareness.\n\nWarm regards,\n\nDr. Antony Augusthy`;
     const attachments = [{
       filename: 'feedback.pdf',
       path: filePath,
     }];
 
-    sendEmail(email, subject, text, attachments);
+    await sendEmail(email, subject, text, attachments);
 
-    res.status(200).json({success: true});
+    // res.status(200).json({ success: true });
   } catch (error) {
     res.status(500).json({ success: false, error: error });
   }
@@ -341,8 +341,13 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
       fs.mkdirSync(customFolderPath, { recursive: true });
     }
 
-    
-
+    // Check if the 'feedback.pdf' already exists in the custom folder
+    const destiPdfPath = path.join(customFolderPath, 'feedback.pdf');
+    if (fs.existsSync(destiPdfPath)) {
+      await sendPdfToEmail(req,res);
+      res.status(200).json({ success: true});
+      return;
+    }
     // Copy the PDF file to the custom folder
     const sourceFolderPath = path.join(__dirname, '..', 'tp'); // Go up one level to access 'tp'
     const sourcePdfPath = path.join(sourceFolderPath, 'yay.pdf');
@@ -358,6 +363,8 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
     await sendScores(req, res);
 
     await sendFeedback(req, res);
+
+    await sendPdfToEmail(req,res);
 
     res.status(200).json({ success: true });
   } catch (error) {

@@ -26,7 +26,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
         }
     }
 
-    if (testType === "Study Skills Set Profile") {
+    if (testType === "Study Skills Profile Assessment") {
         if (score >= 1 && score <= 8) {
             scoreRange = '1-8';
             percentage = '25%';

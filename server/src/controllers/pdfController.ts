@@ -1022,15 +1022,15 @@ export async function sendFeedback(req: Request, res: Response): Promise<void> {
         await carreerSugPdf(req, res, "Multiple Intelligence", "Kinesthetic", 17, 13, 80, 50, 380);
         await carreerSugPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 80, 50, 380);
 
-        //Study Skills Set Profile
-        await makeFeedbackPdf(req, res, "Study Skills Set Profile", "Time Management and Procrastination", 21, 13, 80, 50, 610);
-        await makeFeedbackPdf(req, res, "Study Skills Set Profile", "Concentration and Memory", 21, 13, 80, 50, 390);
-        await makeFeedbackPdf(req, res, "Study Skills Set Profile", "Study Aids and Note-Taking", 21, 13, 80, 50, 150);
-        await makeFeedbackPdf(req, res, "Study Skills Set Profile", "Test Strategies and Test Anxiety", 22, 13, 80, 50, 610);
-        await makeFeedbackPdf(req, res, "Study Skills Set Profile", "Organizing and Processing Information", 22, 13, 80, 50, 390);
-        await makeFeedbackPdf(req, res, "Study Skills Set Profile", "Motivation and Attitude", 22, 13, 80, 50, 150);
-        await makeFeedbackPdf(req, res, "Study Skills Set Profile", "Reading and Selecting the Main Idea", 23, 13, 80, 40, 605);
-        await makeFeedbackPdf(req, res, "Study Skills Set Profile", "Writing", 23, 13, 80, 40, 290);
+        //Study Skills Profile Assessment
+        await makeFeedbackPdf(req, res, "Study Skills Profile Assessment", "Time Management and Procrastination", 21, 13, 80, 50, 610);
+        await makeFeedbackPdf(req, res, "Study Skills Profile Assessment", "Concentration and Memory", 21, 13, 80, 50, 390);
+        await makeFeedbackPdf(req, res, "Study Skills Profile Assessment", "Study Aids and Note-Taking", 21, 13, 80, 50, 150);
+        await makeFeedbackPdf(req, res, "Study Skills Profile Assessment", "Test Strategies and Test Anxiety", 22, 13, 80, 50, 610);
+        await makeFeedbackPdf(req, res, "Study Skills Profile Assessment", "Organizing and Processing Information", 22, 13, 80, 50, 390);
+        await makeFeedbackPdf(req, res, "Study Skills Profile Assessment", "Motivation and Attitude", 22, 13, 80, 50, 150);
+        await makeFeedbackPdf(req, res, "Study Skills Profile Assessment", "Reading and Selecting the Main Idea", 23, 13, 80, 40, 605);
+        await makeFeedbackPdf(req, res, "Study Skills Profile Assessment", "Writing", 23, 13, 80, 40, 290);
 
         //Emotional Intelligence
         await makeFeedbackPdf(req, res, "Emotional Intelligence", "Self-Awareness", 33, 13, 80, 40, 620);
@@ -1136,7 +1136,7 @@ export async function sendUserInfo(req: Request, res: Response): Promise<void> {
 export async function sendCharts(req: Request, res: Response): Promise<void> {
     try {
         //Charts
-        // await makeBarChartPdf(req, res, "Study Skills Set Profile", 20);
+        // await makeBarChartPdf(req, res, "Study Skills Profile Assessment", 20);
         // await makeBarChartPdf(req, res, "Aptitude", 6);
         // await makeBarChartPdf(req, res, "Multiple Intelligence", 10);
         // await makeBarChartPdf(req, res, "Emotional Intelligence", 32);
@@ -1175,14 +1175,14 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         await makeScorePercentPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 100, 640);
 
         //Study skill profile
-        await makeScorePercentPdf(req, res, "Study Skills Set Profile", "Time Management and Procrastination", 21, 13, 70, 655);
-        await makeScorePercentPdf(req, res, "Study Skills Set Profile", "Concentration and Memory", 21, 13, 70, 438);
-        await makeScorePercentPdf(req, res, "Study Skills Set Profile", "Study Aids and Note-Taking", 21, 13, 70, 200);
-        await makeScorePercentPdf(req, res, "Study Skills Set Profile", "Test Strategies and Test Anxiety", 22, 13, 70, 655);
-        await makeScorePercentPdf(req, res, "Study Skills Set Profile", "Organizing and Processing Information", 22, 13, 70, 435);
-        await makeScorePercentPdf(req, res, "Study Skills Set Profile", "Motivation and Attitude", 22, 13, 70, 200);
-        await makeScorePercentPdf(req, res, "Study Skills Set Profile", "Reading and Selecting the Main Idea", 23, 13, 70, 650);
-        await makeScorePercentPdf(req, res, "Study Skills Set Profile", "Writing", 23, 13, 70, 350);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Time Management and Procrastination", 21, 13, 70, 655);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Concentration and Memory", 21, 13, 70, 438);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Study Aids and Note-Taking", 21, 13, 70, 200);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Test Strategies and Test Anxiety", 22, 13, 70, 655);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Organizing and Processing Information", 22, 13, 70, 435);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Motivation and Attitude", 22, 13, 70, 200);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Reading and Selecting the Main Idea", 23, 13, 70, 650);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Writing", 23, 13, 70, 350);
 
         //students wheel of life
         await makeScorePercentPdf(req, res, "Students Wheel of Life", "Academic Competency", 25, 13, 450, 580);
